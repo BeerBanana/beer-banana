@@ -9,7 +9,7 @@ import java.util.Set;
  * Created by Martin Kaspar on 24/02/2017.
  */
 @Entity
-@Table(name = "ALCOHOL")
+@Table(name = "alcohol")
 public class AlcoholDTO {
 
     private Long id;
