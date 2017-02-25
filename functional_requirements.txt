@@ -1,0 +1,36 @@
+functional requirements
+
+-----
+
+- Server part of application must implements following functions:
+
+- Basic functions:
+
+    1. Add new alcohol.
+
+    2. Import multiple alcohol drinks.
+
+    3. Add new drinker (consumer).
+
+    4. Retrieve list of all alcohol by:
+        - all alcohols in db
+        - alcohol type
+        - alcohol name
+        - alcohol volume range
+        - drinker id
+
+    5. Retrieve list of all drinkers by:
+        - all drinkers in db
+        - alcohol id
+
+    6. Retrieve alcohol by id and its drinkers.
+
+    7. Retrieve drinker and its drinks.
+
+    8. Update alcohol.
+
+    9. Update drinker.
+
+- Advanced functions:
+
+    1. todo
