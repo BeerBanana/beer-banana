@@ -31,6 +31,10 @@ functional requirements
 
     9. Update drinker.
 
+    10. Delete alcohol.
+
+    11. Delete drinker.
+
 - Advanced functions:
 
     1. todo

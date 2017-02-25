@@ -2,19 +2,22 @@ package cz.mka.impl.jpa;
 
 import com.google.common.base.Objects;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by Martin Kaspar on 24/02/2017.
  */
 @Entity
-@Table(name = "ALCOHOL_DRINKER")
-public class AlcoholDrinker {
+@Table(name = "alcohol_drinker")
+public class AlcoholDrinkerDTO implements Serializable {
 
     private Long alcoholId;
     private Long drinkerId;
 
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "alcohol_id")
     public Long getAlcoholId() {
         return alcoholId;
     }
@@ -23,6 +26,9 @@ public class AlcoholDrinker {
         this.alcoholId = alcoholId;
     }
 
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "drinker_id")
     public Long getDrinkerId() {
         return drinkerId;
     }
@@ -35,7 +41,7 @@ public class AlcoholDrinker {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        AlcoholDrinker that = (AlcoholDrinker) o;
+        AlcoholDrinkerDTO that = (AlcoholDrinkerDTO) o;
         return Objects.equal(alcoholId, that.alcoholId) &&
                 Objects.equal(drinkerId, that.drinkerId);
     }

@@ -2,8 +2,9 @@ package cz.mka.impl.jpa;
 
 import com.google.common.base.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -12,7 +13,7 @@ import java.util.Set;
  * Created by Martin Kaspar on 24/02/2017.
  */
 @Entity
-@Table(name = "DRINKER")
+@Table(name = "drinker")
 public class DrinkerDTO {
 
     private Long id;
@@ -71,7 +72,7 @@ public class DrinkerDTO {
         this.dateRegistration = dateRegistration;
     }
 
-    @ManyToMany(mappedBy = "alcoholDTOs")
+    @OneToMany(mappedBy = "drinker", cascade = CascadeType.ALL, orphanRemoval = true)
     public Set<AlcoholDTO> getAlcoholDTOs() {
         return alcoholDTOs;
     }

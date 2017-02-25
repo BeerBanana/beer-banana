@@ -13,6 +13,7 @@ public class Drinker {
     private String firstName;
     private String lastName;
     private String nickname;
+    private DrinkerStatus drinkerStatus;
     private LocalDateTime dateRegistration;
     private String comment;
 
@@ -48,6 +49,14 @@ public class Drinker {
         this.nickname = nickname;
     }
 
+    public DrinkerStatus getDrinkerStatus() {
+        return drinkerStatus;
+    }
+
+    public void setDrinkerStatus(DrinkerStatus drinkerStatus) {
+        this.drinkerStatus = drinkerStatus;
+    }
+
     public LocalDateTime getDateRegistration() {
         return dateRegistration;
     }
@@ -73,12 +82,13 @@ public class Drinker {
                 Objects.equal(firstName, drinker.firstName) &&
                 Objects.equal(lastName, drinker.lastName) &&
                 Objects.equal(nickname, drinker.nickname) &&
+                Objects.equal(drinkerStatus, drinker.drinkerStatus) &&
                 Objects.equal(dateRegistration, drinker.dateRegistration) &&
                 Objects.equal(comment, drinker.comment);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id, firstName, lastName, nickname, dateRegistration, comment);
+        return Objects.hashCode(id, firstName, lastName, nickname, drinkerStatus, dateRegistration, comment);
     }
 }

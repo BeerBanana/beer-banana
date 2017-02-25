@@ -72,8 +72,7 @@ public class AlcoholDTO {
         this.capacity = capacity;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "ALCOHOL_DRINKER", joinColumns = @JoinColumn(name = "alcohol_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "drinker_id", referencedColumnName = "id"))
+    @OneToMany(mappedBy = "alcohol")
     public Set<DrinkerDTO> getDrinkerDTOs() {
         return drinkerDTOs;
     }
