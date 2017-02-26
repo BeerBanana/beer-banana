@@ -11,7 +11,7 @@ public class Alcohol {
 
     private Long id;
     private String title;
-    private String type;
+    private AlcoholType type;
     private Double volume;
     private Double capacity;
     private List<Drinker> drinkers;
@@ -19,7 +19,7 @@ public class Alcohol {
     public Alcohol() {
     }
 
-    public Alcohol(String title, String type, double volume, double capacity) {
+    public Alcohol(String title, AlcoholType type, double volume, double capacity) {
         this.title = title;
         this.type = type;
         this.volume = volume;
@@ -42,11 +42,11 @@ public class Alcohol {
         this.title = title;
     }
 
-    public String getType() {
+    public AlcoholType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(AlcoholType type) {
         this.type = type;
     }
 

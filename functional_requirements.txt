@@ -15,7 +15,7 @@ functional requirements
     4. Retrieve list of all alcohol by:
         - all alcohols in db
         - alcohol type
-        - alcohol name
+        - alcohol title
         - alcohol volume range
         - drinker id
 

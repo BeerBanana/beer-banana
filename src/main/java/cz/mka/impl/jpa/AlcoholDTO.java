@@ -1,6 +1,7 @@
 package cz.mka.impl.jpa;
 
 import com.google.common.base.Objects;
+import cz.mka.rest.model.AlcoholType;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -14,7 +15,7 @@ public class AlcoholDTO {
 
     private Long id;
     private String title;
-    private String type;
+    private AlcoholType type;
     private Double volume;
     private Double capacity;
     private Set<DrinkerDTO> drinkerDTOs;
@@ -22,7 +23,7 @@ public class AlcoholDTO {
     public AlcoholDTO() {
     }
 
-    public AlcoholDTO(String title, String type, Double volume, Double capacity, Set<DrinkerDTO> drinkerDTOs) {
+    public AlcoholDTO(String title, AlcoholType type, Double volume, Double capacity, Set<DrinkerDTO> drinkerDTOs) {
         this.title = title;
         this.type = type;
         this.volume = volume;
@@ -48,11 +49,11 @@ public class AlcoholDTO {
         this.title = title;
     }
 
-    public String getType() {
+    public AlcoholType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(AlcoholType type) {
         this.type = type;
     }
 

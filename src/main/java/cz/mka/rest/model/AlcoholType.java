@@ -5,7 +5,9 @@ package cz.mka.rest.model;
  */
 public enum AlcoholType {
     BEER,
+    COCKTAIL,
     WINE,
     SHOT,
-    ROCKET_FUEL
+    ROCKET_FUEL,
+    OTHER
 }

@@ -13,6 +13,11 @@ import java.util.stream.Collectors;
  */
 public class AlcoholConverter {
 
+    /**
+     * todo
+     * @param dto
+     * @return
+     */
     public static Alcohol convertAlcoholDTO(AlcoholDTO dto) {
         Alcohol result = new Alcohol();
 
@@ -27,6 +32,11 @@ public class AlcoholConverter {
         return result;
     }
 
+    /**
+     * Converts Alcohol object into AlcoholDTO.
+     * @param alcohol Alcohol
+     * @return AlcoholDTO
+     */
     public static AlcoholDTO convertAlcohol(Alcohol alcohol) {
         AlcoholDTO dto = new AlcoholDTO();
 
@@ -35,6 +45,10 @@ public class AlcoholConverter {
         dto.setType(alcohol.getType());
         dto.setVolume(alcohol.getVolume());
         dto.setCapacity(alcohol.getCapacity());
+
+        if (alcohol.getDrinkers() == null || alcohol.getDrinkers().isEmpty()) {
+            return dto;
+        }
 
         Set<DrinkerDTO> drinkerDTOs =
                 alcohol.getDrinkers().stream().map(AlcoholConverter::convertDrinker)
@@ -45,6 +59,11 @@ public class AlcoholConverter {
         return dto;
     }
 
+    /**
+     * todo
+     * @param dto
+     * @return
+     */
     public static Drinker convertDrinkerDTO(DrinkerDTO dto) {
         Drinker result = new Drinker();
 
@@ -58,6 +77,11 @@ public class AlcoholConverter {
         return result;
     }
 
+    /**
+     * todo
+     * @param drinker
+     * @return
+     */
     public static DrinkerDTO convertDrinker(Drinker drinker) {
         DrinkerDTO dto = new DrinkerDTO();
 

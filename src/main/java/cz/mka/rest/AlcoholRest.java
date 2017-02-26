@@ -8,39 +8,55 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Set;
 
 /**
  * Created by Martin Kaspar on 24/02/2017.
  */
 @Controller
-@RequestMapping(path = "/alcohol")
+@RequestMapping(path = "/drinks", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class AlcoholRest {
 
     @Autowired
     private AlcoholService service;
 
-    @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    // find all
+    @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<Set<Alcohol>> findAll() {
         return new ResponseEntity<>(service.findAll(), HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/{type}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<Set<Alcohol>> findAllByType(@PathVariable AlcoholType type) {
+    // todo find all by XXX sjednotit ??
+
+    // find all by type
+    @RequestMapping(method = RequestMethod.GET)
+    public ResponseEntity<Set<Alcohol>> findAllByType(@RequestParam AlcoholType type) {
         return new ResponseEntity<>(service.findAllByType(type), HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    // find all by title
+    @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<Set<Alcohol>> findAllByTitle(@RequestParam String title) {
-        return new ResponseEntity<>(service.findAllByTitle(title), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(service.findAllByTitle(title), HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    // find all by volume
+    @RequestMapping(method = RequestMethod.GET)
+    public ResponseEntity<Set<Alcohol>> findAllByVolume(@RequestParam Double volume) {
+        return new ResponseEntity<>(service.findAllByVolume(volume), HttpStatus.OK);
+    }
+
+    // find all by drinker id
+    @RequestMapping(method = RequestMethod.GET)
+    public ResponseEntity<Set<Alcohol>> findAllByVolume(@RequestParam Long drinkerId) {
+        return new ResponseEntity<>(service.findAllByDrinkerId(drinkerId), HttpStatus.OK);
+    }
+
+    // find by id
+    @RequestMapping(path = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Alcohol> findById(@PathVariable long id) {
         Alcohol result = service.findOne(id);
         if (result == null) {
@@ -49,11 +65,36 @@ public class AlcoholRest {
         return new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);
     }
 
-    //todo
-    public ResponseEntity<Alcohol> save() {
-//        AlcoholDTO result = service.
-
-        return null;
+    // save new
+    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<Alcohol> save(@RequestBody @Valid Alcohol alcohol) {
+        Alcohol result = service.save(alcohol);
+        if (result == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(result, HttpStatus.CREATED);
     }
+
+    // update
+    @RequestMapping(path = "/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<Alcohol> update(@PathVariable Long id,
+                                          @RequestBody @Valid Alcohol alcohol) {
+        alcohol.setId(id);
+        Alcohol result = service.save(alcohol);
+        if (result == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+
+    // delete
+    @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity delete(@PathVariable Long id) {
+        service.delete(id);
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
+    }
+
+
 
 }
