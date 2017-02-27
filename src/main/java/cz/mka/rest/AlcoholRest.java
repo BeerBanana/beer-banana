@@ -1,17 +1,22 @@
 package cz.mka.rest;
 
-import cz.mka.api.AlcoholService;
-import cz.mka.rest.model.Alcohol;
-import cz.mka.rest.model.AlcoholType;
+import java.util.Set;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.validation.Valid;
-import java.util.Set;
+import cz.mka.api.AlcoholService;
+import cz.mka.rest.model.AlcoholDTO;
 
 /**
  * Created by Martin Kaspar on 24/02/2017.
@@ -25,40 +30,35 @@ public class AlcoholRest {
 
     // find all
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<Set<Alcohol>> findAll() {
+    public ResponseEntity<Set<AlcoholDTO>> findAll() {
         return new ResponseEntity<>(service.findAll(), HttpStatus.OK);
     }
 
     // todo find all by XXX sjednotit ??
 
-    // find all by type
-    @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<Set<Alcohol>> findAllByType(@RequestParam AlcoholType type) {
-        return new ResponseEntity<>(service.findAllByType(type), HttpStatus.OK);
-    }
 
     // find all by title
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<Set<Alcohol>> findAllByTitle(@RequestParam String title) {
+    public ResponseEntity<Set<AlcoholDTO>> findAllByTitle(@RequestParam String title) {
         return new ResponseEntity<>(service.findAllByTitle(title), HttpStatus.OK);
     }
 
     // find all by volume
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<Set<Alcohol>> findAllByVolume(@RequestParam Double volume) {
+    public ResponseEntity<Set<AlcoholDTO>> findAllByVolume(@RequestParam Double volume) {
         return new ResponseEntity<>(service.findAllByVolume(volume), HttpStatus.OK);
     }
 
     // find all by drinker id
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<Set<Alcohol>> findAllByVolume(@RequestParam Long drinkerId) {
+    public ResponseEntity<Set<AlcoholDTO>> findAllByVolume(@RequestParam Long drinkerId) {
         return new ResponseEntity<>(service.findAllByDrinkerId(drinkerId), HttpStatus.OK);
     }
 
     // find by id
     @RequestMapping(path = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Alcohol> findById(@PathVariable long id) {
-        Alcohol result = service.findOne(id);
+    public ResponseEntity<AlcoholDTO> findById(@PathVariable long id) {
+        AlcoholDTO result = service.findOne(id);
         if (result == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -67,8 +67,8 @@ public class AlcoholRest {
 
     // save new
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<Alcohol> save(@RequestBody @Valid Alcohol alcohol) {
-        Alcohol result = service.save(alcohol);
+    public ResponseEntity<AlcoholDTO> save(@RequestBody @Valid AlcoholDTO alcohol) {
+        AlcoholDTO result = service.save(alcohol);
         if (result == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -77,10 +77,10 @@ public class AlcoholRest {
 
     // update
     @RequestMapping(path = "/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<Alcohol> update(@PathVariable Long id,
-                                          @RequestBody @Valid Alcohol alcohol) {
+    public ResponseEntity<AlcoholDTO> update(@PathVariable Long id,
+                                          @RequestBody @Valid AlcoholDTO alcohol) {
         alcohol.setId(id);
-        Alcohol result = service.save(alcohol);
+        AlcoholDTO result = service.save(alcohol);
         if (result == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }

@@ -1,17 +1,41 @@
-functional requirements
+*******************************************
+*          BEERBANANA APPLICATION         *
+*          Functional requirements        *
+*******************************************
 
------
 
-- Server part of application must implements following functions:
+
+1. Terminology
+
+DRINKER is a person who has an account (registration) and who consumes drinks 
+of various types.
+
+DRINK TYPE is describes a kind of beverage. It's characterized by name, volume,
+alcohol content etc.
+
+CONSUMPTION is the act of ingestion of one unit of a beverage by a DRINKER.
+
+
+------------------------------------------------------------------------
+
+2. Functionality
+
+
+
+- Server part of the application must implements following functions:
 
 - Basic functions:
 
-    1. Add new alcohol.
+    1. Add new Drink type.
 
-    2. Import multiple alcohol drinks.
+	//COMMENT - ASE clarify this requirement. Meaning multiple consumptions?
+    2. Import multiple alcohol drinks.   
 
-    3. Add new drinker (consumer).
+    3. Add a new drinker (consumer).
 
+
+	//COMMENT - clarify this. List of consumption by user 
+	// or list of registered drink types?
     4. Retrieve list of all alcohol by:
         - all alcohols in db
         - alcohol type

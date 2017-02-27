@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 /**
  * Created by Martin Kaspar on 24/02/2017.
  */
-public class Drinker {
+public class DrinkerDTO {
 
     private Long id;
     private String firstName;
@@ -77,7 +77,7 @@ public class Drinker {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Drinker drinker = (Drinker) o;
+        DrinkerDTO drinker = (DrinkerDTO) o;
         return Objects.equal(id, drinker.id) &&
                 Objects.equal(firstName, drinker.firstName) &&
                 Objects.equal(lastName, drinker.lastName) &&
