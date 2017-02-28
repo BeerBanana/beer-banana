@@ -1,12 +1,9 @@
 package cz.mka.impl.utils;
 
-import cz.mka.impl.jpa.AlcoholDTO;
-import cz.mka.impl.jpa.DrinkerDTO;
-import cz.mka.rest.model.Alcohol;
-import cz.mka.rest.model.Drinker;
-
-import java.util.Set;
-import java.util.stream.Collectors;
+import cz.mka.impl.jpa.DrinkType;
+import cz.mka.impl.jpa.Drinker;
+import cz.mka.rest.model.AlcoholDTO;
+import cz.mka.rest.model.DrinkerDTO;
 
 /**
  * Created by Martin Kaspar on 25/02/2017.
@@ -18,12 +15,11 @@ public class AlcoholConverter {
      * @param dto
      * @return
      */
-    public static Alcohol convertAlcoholDTO(AlcoholDTO dto) {
-        Alcohol result = new Alcohol();
+    public static AlcoholDTO convertAlcoholDTO(DrinkType dto) {
+        AlcoholDTO result = new AlcoholDTO();
 
         result.setId(dto.getId());
         result.setTitle(dto.getTitle());
-        result.setType(dto.getType());
         result.setVolume(dto.getVolume());
         result.setCapacity(dto.getCapacity());
 
@@ -37,12 +33,11 @@ public class AlcoholConverter {
      * @param alcohol Alcohol
      * @return AlcoholDTO
      */
-    public static AlcoholDTO convertAlcohol(Alcohol alcohol) {
-        AlcoholDTO dto = new AlcoholDTO();
+    public static DrinkType convertAlcohol(AlcoholDTO alcohol) {
+        DrinkType dto = new DrinkType();
 
         dto.setId(alcohol.getId());
         dto.setTitle(alcohol.getTitle());
-        dto.setType(alcohol.getType());
         dto.setVolume(alcohol.getVolume());
         dto.setCapacity(alcohol.getCapacity());
 
@@ -50,11 +45,7 @@ public class AlcoholConverter {
             return dto;
         }
 
-        Set<DrinkerDTO> drinkerDTOs =
-                alcohol.getDrinkers().stream().map(AlcoholConverter::convertDrinker)
-                        .collect(Collectors.toSet());
-
-        dto.setDrinkerDTOs(drinkerDTOs);
+    
 
         return dto;
     }
@@ -64,8 +55,8 @@ public class AlcoholConverter {
      * @param dto
      * @return
      */
-    public static Drinker convertDrinkerDTO(DrinkerDTO dto) {
-        Drinker result = new Drinker();
+    public static DrinkerDTO convertDrinkerDTO(Drinker dto) {
+        DrinkerDTO result = new DrinkerDTO();
 
         result.setId(dto.getId());
         result.setFirstName(dto.getFirstName());
@@ -82,8 +73,8 @@ public class AlcoholConverter {
      * @param drinker
      * @return
      */
-    public static DrinkerDTO convertDrinker(Drinker drinker) {
-        DrinkerDTO dto = new DrinkerDTO();
+    public static Drinker convertDrinker(DrinkerDTO drinker) {
+        Drinker dto = new Drinker();
 
         dto.setId(drinker.getId());
         dto.setFirstName(drinker.getFirstName());
