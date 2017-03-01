@@ -13,7 +13,7 @@ public class DrinkerDTO {
     private String firstName;
     private String lastName;
     private String nickname;
-    private DrinkerStatus drinkerStatus;
+    private DrinkerStatus status;
     private LocalDateTime dateRegistration;
     private String comment;
 
@@ -49,12 +49,12 @@ public class DrinkerDTO {
         this.nickname = nickname;
     }
 
-    public DrinkerStatus getDrinkerStatus() {
-        return drinkerStatus;
+    public DrinkerStatus getStatus() {
+        return status;
     }
 
-    public void setDrinkerStatus(DrinkerStatus drinkerStatus) {
-        this.drinkerStatus = drinkerStatus;
+    public void setStatus(DrinkerStatus status) {
+        this.status = status;
     }
 
     public LocalDateTime getDateRegistration() {
@@ -77,18 +77,18 @@ public class DrinkerDTO {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        DrinkerDTO drinker = (DrinkerDTO) o;
-        return Objects.equal(id, drinker.id) &&
-                Objects.equal(firstName, drinker.firstName) &&
-                Objects.equal(lastName, drinker.lastName) &&
-                Objects.equal(nickname, drinker.nickname) &&
-                Objects.equal(drinkerStatus, drinker.drinkerStatus) &&
-                Objects.equal(dateRegistration, drinker.dateRegistration) &&
-                Objects.equal(comment, drinker.comment);
+        DrinkerDTO that = (DrinkerDTO) o;
+        return Objects.equal(id, that.id) &&
+                Objects.equal(firstName, that.firstName) &&
+                Objects.equal(lastName, that.lastName) &&
+                Objects.equal(nickname, that.nickname) &&
+                Objects.equal(status, that.status) &&
+                Objects.equal(dateRegistration, that.dateRegistration) &&
+                Objects.equal(comment, that.comment);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id, firstName, lastName, nickname, drinkerStatus, dateRegistration, comment);
+        return Objects.hashCode(id, firstName, lastName, nickname, status, dateRegistration, comment);
     }
 }

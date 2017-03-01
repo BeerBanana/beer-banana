@@ -1,7 +1,7 @@
 package cz.mka.rest;
 
 import cz.mka.api.AlcoholService;
-import cz.mka.rest.model.AlcoholDTO;
+import cz.mka.rest.model.DrinkTypeDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -24,45 +24,45 @@ public class AlcoholRest {
 
     // find all
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<Set<AlcoholDTO>> findAll() {
+    public ResponseEntity<Set<DrinkTypeDTO>> findAll() {
         return new ResponseEntity<>(service.findAll(), HttpStatus.OK);
     }
 
-    // todo find all by XXX sjednotit ??
+    // todo mka - find all by XXX sjednotit ??
 
 
     // find all by title
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<Set<AlcoholDTO>> findAllByTitle(@RequestParam String title) {
+    public ResponseEntity<Set<DrinkTypeDTO>> findAllByTitle(@RequestParam String title) {
         return new ResponseEntity<>(service.findAllByTitle(title), HttpStatus.OK);
     }
 
-    // find all by volume
+    // find all by percentage
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<Set<AlcoholDTO>> findAllByVolume(@RequestParam Double volume) {
-        return new ResponseEntity<>(service.findAllByVolume(volume), HttpStatus.OK);
+    public ResponseEntity<Set<DrinkTypeDTO>> findAllByPercentage(@RequestParam Double percentage) {
+        return new ResponseEntity<>(service.findAllByPercentage(percentage), HttpStatus.OK);
     }
 
     // find all by drinker id
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<Set<AlcoholDTO>> findAllByDrinkerId(@RequestParam Long drinkerId) {
+    public ResponseEntity<Set<DrinkTypeDTO>> findAllByDrinkerId(@RequestParam Long drinkerId) {
         return new ResponseEntity<>(service.findAllByDrinkerId(drinkerId), HttpStatus.OK);
     }
 
     // find by id
     @RequestMapping(path = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<AlcoholDTO> findById(@PathVariable long id) {
-        AlcoholDTO result = service.findOne(id);
+    public ResponseEntity<DrinkTypeDTO> findById(@PathVariable long id) {
+        DrinkTypeDTO result = service.findOne(id);
         if (result == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     // save new
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<AlcoholDTO> save(@RequestBody @Valid AlcoholDTO alcohol) {
-        AlcoholDTO result = service.save(alcohol);
+    public ResponseEntity<DrinkTypeDTO> save(@RequestBody @Valid DrinkTypeDTO dto) {
+        DrinkTypeDTO result = service.save(dto);
         if (result == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -71,16 +71,15 @@ public class AlcoholRest {
 
     // update
     @RequestMapping(path = "/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<AlcoholDTO> update(@PathVariable Long id,
-                                          @RequestBody @Valid AlcoholDTO alcohol) {
-        alcohol.setId(id);
-        AlcoholDTO result = service.save(alcohol);
+    public ResponseEntity<DrinkTypeDTO> update(@PathVariable Long id,
+                                               @RequestBody @Valid DrinkTypeDTO dto) {
+        dto.setId(id);
+        DrinkTypeDTO result = service.save(dto);
         if (result == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
-
 
     // delete
     @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
@@ -88,7 +87,6 @@ public class AlcoholRest {
         service.delete(id);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
-
 
 
 }

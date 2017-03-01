@@ -1,6 +1,7 @@
 package cz.mka.impl.jpa;
 
 import com.google.common.base.Objects;
+import cz.mka.rest.model.DrinkerStatus;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,6 +30,9 @@ public class Drinker {
 	
 	@Column(name = "NICK_NAME")
 	private String nickName;
+
+	@Column(name = "STATUS")
+	private DrinkerStatus status;
 	
 	@Column(name = "DATE_REGISTRATION")
 	private LocalDateTime dateRegistration;
@@ -68,12 +72,12 @@ public class Drinker {
 		this.nickName = nickName;
 	}
 
-	public String getComment() {
-		return comment;
+	public DrinkerStatus getStatus() {
+		return status;
 	}
 
-	public void setComment(String comment) {
-		this.comment = comment;
+	public void setStatus(DrinkerStatus status) {
+		this.status = status;
 	}
 
 	public LocalDateTime getDateRegistration() {
@@ -84,21 +88,30 @@ public class Drinker {
 		this.dateRegistration = dateRegistration;
 	}
 
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
 	@Override
 	public boolean equals(Object o) {
-		if (this == o)
-			return true;
-		if (o == null || getClass() != o.getClass())
-			return false;
-		Drinker drinkerDTO = (Drinker) o;
-		return Objects.equal(id, drinkerDTO.id) && Objects.equal(firstName, drinkerDTO.firstName)
-				&& Objects.equal(lastName, drinkerDTO.lastName) && Objects.equal(nickName, drinkerDTO.nickName)
-				&& Objects.equal(comment, drinkerDTO.comment)
-				&& Objects.equal(dateRegistration, drinkerDTO.dateRegistration);
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Drinker drinker = (Drinker) o;
+		return Objects.equal(id, drinker.id) &&
+				Objects.equal(firstName, drinker.firstName) &&
+				Objects.equal(lastName, drinker.lastName) &&
+				Objects.equal(nickName, drinker.nickName) &&
+				Objects.equal(status, drinker.status) &&
+				Objects.equal(dateRegistration, drinker.dateRegistration) &&
+				Objects.equal(comment, drinker.comment);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hashCode(id, firstName, lastName, nickName, comment, dateRegistration);
+		return Objects.hashCode(id, firstName, lastName, nickName, status, dateRegistration, comment);
 	}
 }

@@ -2,7 +2,7 @@ package cz.mka.impl.utils;
 
 import cz.mka.impl.jpa.DrinkType;
 import cz.mka.impl.jpa.Drinker;
-import cz.mka.rest.model.AlcoholDTO;
+import cz.mka.rest.model.DrinkTypeDTO;
 import cz.mka.rest.model.DrinkerDTO;
 
 /**
@@ -11,80 +11,74 @@ import cz.mka.rest.model.DrinkerDTO;
 public class AlcoholConverter {
 
     /**
-     * todo
-     * @param dto
-     * @return
+     * Converts DrinkType into DrinkTypeDTO.
+     * @param drinkType DrinkType
+     * @return DrinkTypeDTO
      */
-    public static AlcoholDTO convertAlcoholDTO(DrinkType dto) {
-        AlcoholDTO result = new AlcoholDTO();
+    public static DrinkTypeDTO convertDrinkTypeIntoDTO(DrinkType drinkType) {
+        DrinkTypeDTO dto = new DrinkTypeDTO();
 
-        result.setId(dto.getId());
-        result.setTitle(dto.getTitle());
-        result.setVolume(dto.getVolume());
-        result.setCapacity(dto.getCapacity());
-
-        // TODO DRINKERS
-
-        return result;
-    }
-
-    /**
-     * Converts Alcohol object into AlcoholDTO.
-     * @param alcohol Alcohol
-     * @return AlcoholDTO
-     */
-    public static DrinkType convertAlcohol(AlcoholDTO alcohol) {
-        DrinkType dto = new DrinkType();
-
-        dto.setId(alcohol.getId());
-        dto.setTitle(alcohol.getTitle());
-        dto.setVolume(alcohol.getVolume());
-        dto.setCapacity(alcohol.getCapacity());
-
-        if (alcohol.getDrinkers() == null || alcohol.getDrinkers().isEmpty()) {
-            return dto;
-        }
-
-    
+        dto.setId(drinkType.getId());
+        dto.setTitle(drinkType.getTitle());
+        dto.setVolume(drinkType.getVolume());
+        dto.setPercentage(drinkType.getPercentage());
 
         return dto;
     }
 
     /**
-     * todo
-     * @param dto
-     * @return
+     * Converts DrinkTypeDTO into DrinkType.
+     * @param dto DrinkTypeDTO
+     * @return DrinkType
      */
-    public static DrinkerDTO convertDrinkerDTO(Drinker dto) {
-        DrinkerDTO result = new DrinkerDTO();
+    public static DrinkType convertDTOIntoDrinkType(DrinkTypeDTO dto) {
+        DrinkType drinkType = new DrinkType();
 
-        result.setId(dto.getId());
-        result.setFirstName(dto.getFirstName());
-        result.setLastName(dto.getLastName());
-        result.setNickname(dto.getNickName());
-        result.setDateRegistration(dto.getDateRegistration());
-        result.setComment(dto.getComment());
+        drinkType.setId(dto.getId());
+        drinkType.setTitle(dto.getTitle());
+        drinkType.setVolume(dto.getVolume());
+        drinkType.setPercentage(dto.getPercentage());
 
-        return result;
+        return drinkType;
     }
 
     /**
-     * todo
-     * @param drinker
-     * @return
+     * Converts Drinker into DrinkerDTO.
+     * @param drinker Drinker
+     * @return DrinkerDTO
      */
-    public static Drinker convertDrinker(DrinkerDTO drinker) {
-        Drinker dto = new Drinker();
+    public static DrinkerDTO convertDrinkerIntoDTO(Drinker drinker) {
+        DrinkerDTO dto = new DrinkerDTO();
 
         dto.setId(drinker.getId());
         dto.setFirstName(drinker.getFirstName());
         dto.setLastName(drinker.getLastName());
-        dto.setNickName(drinker.getLastName());
+        dto.setNickname(drinker.getNickName());
+        dto.setStatus(drinker.getStatus());
         dto.setDateRegistration(drinker.getDateRegistration());
         dto.setComment(drinker.getComment());
 
+        return dto;
+    }
+
+    /**
+     * Converts DrinkerDTO into Drinker.
+     * @param dto DrinkerDTO
+     * @return Drinker
+     */
+    public static Drinker convertDTOIntoDrinker(DrinkerDTO dto) {
+        Drinker drinker = new Drinker();
+
+        drinker.setId(dto.getId());
+        drinker.setFirstName(dto.getFirstName());
+        drinker.setLastName(dto.getLastName());
+        drinker.setNickName(dto.getNickname());
+        drinker.setStatus(dto.getStatus());
+        drinker.setDateRegistration(dto.getDateRegistration());
+        drinker.setComment(dto.getComment());
+
         // TODO SET ALCOHOL DROS
 
-        return dto;
+        return drinker;
     }
 }
