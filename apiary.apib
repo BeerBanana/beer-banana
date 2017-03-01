@@ -1,0 +1,65 @@
+FORMAT: 1A
+HOST: http://www.beerbanana.cz/beerbanana/
+
+# BeerBanana
+
+TODO description
+
+
+## Drinks Collection [/drinks{?title,percentage,drinkerId}]
+
+### List All Drinks [GET]
+
+Retrieves all drinks or by request parameters title, percentage and drinker identifier.
+
++ Parameters
+    + title: `Staropramen` (string, optional) - official title or part of it. Case insensitive
+    + percentage: `beer` (enum, optional) - alcohol percentage category, e.g. beer, wine, cocktail, shot, other. Case insensitive
+    + drinkerId: `12345` (number, optional) - drinker identifier
+
++ Response 200 (application/json;charset=UTF-8)
+    + Attributes (array[Drinks Collection Response])
+
+
+## Single Drink [/drinks/{id}]
+
+### Retrieve Drink [GET]
+
+Retrieves drink object by its identifier.
+
++ Response 200 (application/json;charset=UTF-8)
+    + Attributes (Drink Response)
+
+# Data Structures
+
+### Drink (object)
+- id: 12345 (number, required) - drink identifier
+- title: `Staropramen 11°` (string, required) - official drink title
+- volume: `0,5 l` (string, required) - usual drink capacity in litres
+- percentage: `4,7 %` (string, required) - alcohol percentage per usual drink capacity
+- consumption: 1458 (number, required) - number of drinkers who consumed current drink
+- totalConsumption: 35694 (number, required) - total number of consumed current drink since app life
+
+### Drinker (object)
+- id: 22356 (number, required) - drinker identifier
+- firstName: `Martin` (string, required) - first name identifier
+- lastName: `Kašpar` (string, required) - last name identifier
+- nickName: `Mkax` (string, optional) - random nick name provided by drinker
+- status: `Completely Smashed` (string, required) - drinker status, e.g. Sober, Tipsy, Drunk And Ravenous, Where The Hell Are My Keys, Jackson Pollock, Completely Smashed
+- dateRegistration: `14:52 February 27, 2017` () - formatted [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date
+- comment: `lol, im batman!` (string, optional) - random information provided by drinker, editable at any time, max 500 chars
+- totalConsumed: `458,62 l` - number of total alcohol consumed
+- totalConsumedByDrinkType (Drinks Consumed)
+
+### Drinks Collection Response (object)
+- Include Drink
+
+### Drink Response (object)
+- Include Drink
+- drinkers (array[Drinker])
+
+### Drinks Consumed (object)
+- beers: 895 (number, required) - total beers consumed per 1 unit, 0,5 l
+- wines: 452 (number, required) - total wines consumed per 1 unit, 0,2 l
+- shots: 321 (number, required) - total shots consumed per 1 unit, 0,04 l
+- other: 89 (number, required) - total other drinks consumed per 1 unit, 0,2 l
