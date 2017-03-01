@@ -1,15 +1,7 @@
 package cz.mka.impl.jpa;
 
+import javax.persistence.*;
 import java.time.LocalTime;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 /**
  * JPA entity.
@@ -34,7 +26,7 @@ public class Consumption {
 	@JoinColumn(name = "DRINK_TYPE_ID", nullable = false)
 	private DrinkType drinkType;
 
-	@Column
+	@Column(name = "CONSUMPTION_TIME")
 	@Temporal(value = TemporalType.TIMESTAMP)
 	private LocalTime consumptionTime;
 	

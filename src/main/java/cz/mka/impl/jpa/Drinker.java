@@ -1,13 +1,12 @@
 package cz.mka.impl.jpa;
 
-import java.time.LocalDateTime;
+import com.google.common.base.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import com.google.common.base.Objects;
+import java.time.LocalDateTime;
 
 /**
  * Created by Martin Kaspar on 24/02/2017.
@@ -18,24 +17,23 @@ import com.google.common.base.Objects;
 @Table(name = "DRINKER")
 public class Drinker {
 
-	//TODO: explicitly specify DB column names
 	@Id
-	@Column(name="DRINKER_ID")
+	@Column(name = "DRINKER_ID")
 	private Long id;
 	
-	@Column
+	@Column(name = "FIRST_NAME")
 	private String firstName;
 	
-	@Column
+	@Column(name = "LAST_NAME")
 	private String lastName;
 	
-	@Column
+	@Column(name = "NICK_NAME")
 	private String nickName;
 	
-	@Column
+	@Column(name = "DATE_REGISTRATION")
 	private LocalDateTime dateRegistration;
 	
-	@Column
+	@Column(name = "COMMENT")
 	private String comment;
 
 	public Long getId() {

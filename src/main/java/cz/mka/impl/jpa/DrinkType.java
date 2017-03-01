@@ -1,13 +1,8 @@
 package cz.mka.impl.jpa;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 import com.google.common.base.Objects;
+
+import javax.persistence.*;
 
 /**
  * Created by Martin Kaspar on 24/02/2017.
@@ -18,19 +13,18 @@ import com.google.common.base.Objects;
 @Table(name = "DRINK_TYPE")
 public class DrinkType {
 
-	//TODO: explicitly specify DB column names
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="DRINK_TYPE_ID")
+	@Column(name = "DRINK_TYPE_ID")
 	private Long id;
 	
-	@Column
+	@Column(name = "TITLE")
 	private String title;
 	
-	@Column
+	@Column(name = "VOLUME")
 	private Double volume;
 	
-	@Column
+	@Column(name = "PERCENTAGE")
 	private Double percentage;
 
 	public DrinkType() {
