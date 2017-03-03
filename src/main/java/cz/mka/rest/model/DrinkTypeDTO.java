@@ -7,21 +7,21 @@ import java.util.List;
 /**
  * Created by Martin Kaspar on 24/02/2017.
  */
-public class AlcoholDTO {
+public class DrinkTypeDTO {
 
 	private Long id;
 	private String title;
 	private Double volume;
-	private Double capacity;
-	private List<DrinkerDTO> drinkers;
+	private Double percentage;
+	private List<DrinkerDTO> drinkers; // todo mka
 
-	public AlcoholDTO() {
+	public DrinkTypeDTO() {
 	}
 
-	public AlcoholDTO(String title, double volume, double capacity) {
+	public DrinkTypeDTO(String title, double volume, double percentage) {
 		this.title = title;
 		this.volume = volume;
-		this.capacity = capacity;
+		this.percentage = percentage;
 	}
 
 	public Long getId() {
@@ -48,12 +48,12 @@ public class AlcoholDTO {
 		this.volume = volume;
 	}
 
-	public Double getCapacity() {
-		return capacity;
+	public Double getPercentage() {
+		return percentage;
 	}
 
-	public void setCapacity(Double capacity) {
-		this.capacity = capacity;
+	public void setPercentage(Double percentage) {
+		this.percentage = percentage;
 	}
 
 	public List<DrinkerDTO> getDrinkers() {
@@ -66,18 +66,18 @@ public class AlcoholDTO {
 
 	@Override
 	public boolean equals(Object o) {
-		if (this == o)
-			return true;
-		if (o == null || getClass() != o.getClass())
-			return false;
-		AlcoholDTO alcohol = (AlcoholDTO) o;
-		return Objects.equal(id, alcohol.id) && Objects.equal(title, alcohol.title)
-				&& Objects.equal(volume, alcohol.volume) && Objects.equal(capacity, alcohol.capacity)
-				&& Objects.equal(drinkers, alcohol.drinkers);
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		DrinkTypeDTO that = (DrinkTypeDTO) o;
+		return Objects.equal(id, that.id) &&
+				Objects.equal(title, that.title) &&
+				Objects.equal(volume, that.volume) &&
+				Objects.equal(percentage, that.percentage) &&
+				Objects.equal(drinkers, that.drinkers);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hashCode(id, title, volume, capacity, drinkers);
+		return Objects.hashCode(id, title, volume, percentage, drinkers);
 	}
 }

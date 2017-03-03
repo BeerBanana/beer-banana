@@ -1,10 +1,9 @@
 package cz.mka.api;
 
-import java.util.Set;
-
+import cz.mka.rest.model.DrinkTypeDTO;
 import org.springframework.stereotype.Service;
 
-import cz.mka.rest.model.AlcoholDTO;
+import java.util.Set;
 
 /**
  * Created by Martin Kaspar on 24/02/2017.
@@ -20,47 +19,41 @@ public interface AlcoholService {
      * @param alcohol Alcohol
      * @return Alcohol
      */
-    AlcoholDTO save(AlcoholDTO alcohol);
+    DrinkTypeDTO save(DrinkTypeDTO alcohol);
 
     /**
      * Retrieves all alcohol objects.
      * @return set of alcohols
      */
-    Set<AlcoholDTO> findAll();
-
-    /**
-     * Retrieves all alcohols by type.
-     * @param type AlcoholType type
-     * @return set of alcohols
-     */
+    Set<DrinkTypeDTO> findAll();
 
     /**
      * Retrieves all alcohols by title.
      * @param title String title
      * @return set of alcohols
      */
-    Set<AlcoholDTO> findAllByTitle(String title);
+    Set<DrinkTypeDTO> findAllByTitle(String title);
 
     /**
-     * Retrieves all alcohols by volume.
-     * @param volume Double volume amount
+     * Retrieves all alcohols by percentage.
+     * @param percentage Double alcohol percentage
      * @return set of alcohols
      */
-    Set<AlcoholDTO> findAllByVolume(Double volume);
+    Set<DrinkTypeDTO> findAllByPercentage(Double percentage);
 
     /**
      * Retrieves all alcohols by drinker id.
      * @param drinkerId Long id of drinker
      * @return set of alcohols
      */
-    Set<AlcoholDTO> findAllByDrinkerId(Long drinkerId);
+    Set<DrinkTypeDTO> findAllByDrinkerId(Long drinkerId);
 
     /**
      * Retrieves alcohol by id.
      * @param id Long id of alcohol
      * @return Alcohol
      */
-    AlcoholDTO findOne(Long id);
+    DrinkTypeDTO findOne(Long id);
 
     /**
      * Deletes alcohol object.

@@ -37,7 +37,7 @@ public class DrinkType {
 		this.percentage = percentage;
 	}
 
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -62,29 +62,28 @@ public class DrinkType {
 		this.volume = volume;
 	}
 
-	public Double getCapacity() {
+	public Double getPercentage() {
 		return percentage;
 	}
 
-	public void setCapacity(Double capacity) {
-		this.percentage = capacity;
+	public void setPercentage(Double percentage) {
+		this.percentage = percentage;
 	}
-
-	
 
 	@Override
 	public boolean equals(Object o) {
-		if (this == o)
-			return true;
-		if (o == null || getClass() != o.getClass())
-			return false;
-		DrinkType alcoholDTO = (DrinkType) o;
-		return Objects.equal(id, alcoholDTO.id) && Objects.equal(title, alcoholDTO.title)
-				&& Objects.equal(volume, alcoholDTO.volume) && Objects.equal(percentage, alcoholDTO.percentage);
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		DrinkType drinkType = (DrinkType) o;
+		return Objects.equal(id, drinkType.id) &&
+				Objects.equal(title, drinkType.title) &&
+				Objects.equal(volume, drinkType.volume) &&
+				Objects.equal(percentage, drinkType.percentage);
 	}
 
 	@Override
 	public int hashCode() {
 		return Objects.hashCode(id, title, volume, percentage);
 	}
+
 }
