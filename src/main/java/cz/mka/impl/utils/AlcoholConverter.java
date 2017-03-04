@@ -1,9 +1,9 @@
 package cz.mka.impl.utils;
 
+import cz.mka.impl.jpa.Consumer;
 import cz.mka.impl.jpa.DrinkType;
-import cz.mka.impl.jpa.Drinker;
+import cz.mka.rest.model.ConsumerDTO;
 import cz.mka.rest.model.DrinkTypeDTO;
-import cz.mka.rest.model.DrinkerDTO;
 
 /**
  * Created by Martin Kaspar on 25/02/2017.
@@ -20,6 +20,7 @@ public class AlcoholConverter {
 
         dto.setId(drinkType.getId());
         dto.setTitle(drinkType.getTitle());
+        dto.setCategory(drinkType.getCategory());
         dto.setVolume(drinkType.getVolume());
         dto.setPercentage(drinkType.getPercentage());
 
@@ -36,6 +37,7 @@ public class AlcoholConverter {
 
         drinkType.setId(dto.getId());
         drinkType.setTitle(dto.getTitle());
+        drinkType.setCategory(dto.getCategory());
         drinkType.setVolume(dto.getVolume());
         drinkType.setPercentage(dto.getPercentage());
 
@@ -43,42 +45,42 @@ public class AlcoholConverter {
     }
 
     /**
-     * Converts Drinker into DrinkerDTO.
-     * @param drinker Drinker
-     * @return DrinkerDTO
+     * Converts Consumer into ConsumerDTO.
+     * @param consumer Consumer
+     * @return ConsumerDTO
      */
-    public static DrinkerDTO convertDrinkerIntoDTO(Drinker drinker) {
-        DrinkerDTO dto = new DrinkerDTO();
+    public static ConsumerDTO convertDrinkerIntoDTO(Consumer consumer) {
+        ConsumerDTO dto = new ConsumerDTO();
 
-        dto.setId(drinker.getId());
-        dto.setFirstName(drinker.getFirstName());
-        dto.setLastName(drinker.getLastName());
-        dto.setNickname(drinker.getNickName());
-        dto.setStatus(drinker.getStatus());
-        dto.setDateRegistration(drinker.getDateRegistration());
-        dto.setComment(drinker.getComment());
+        dto.setId(consumer.getId());
+        dto.setFirstName(consumer.getFirstName());
+        dto.setLastName(consumer.getLastName());
+        dto.setNickName(consumer.getNickName());
+        dto.setStatus(consumer.getStatus());
+        dto.setDateRegistration(consumer.getDateRegistration());
+        dto.setComment(consumer.getQuote());
 
         return dto;
     }
 
     /**
-     * Converts DrinkerDTO into Drinker.
-     * @param dto DrinkerDTO
-     * @return Drinker
+     * Converts ConsumerDTO into Consumer.
+     * @param dto ConsumerDTO
+     * @return Consumer
      */
-    public static Drinker convertDTOIntoDrinker(DrinkerDTO dto) {
-        Drinker drinker = new Drinker();
+    public static Consumer convertDTOIntoDrinker(ConsumerDTO dto) {
+        Consumer consumer = new Consumer();
 
-        drinker.setId(dto.getId());
-        drinker.setFirstName(dto.getFirstName());
-        drinker.setLastName(dto.getLastName());
-        drinker.setNickName(dto.getNickname());
-        drinker.setStatus(dto.getStatus());
-        drinker.setDateRegistration(dto.getDateRegistration());
-        drinker.setComment(dto.getComment());
+        consumer.setId(dto.getId());
+        consumer.setFirstName(dto.getFirstName());
+        consumer.setLastName(dto.getLastName());
+        consumer.setNickName(dto.getNickName());
+        consumer.setStatus(dto.getStatus());
+        consumer.setDateRegistration(dto.getDateRegistration());
+        consumer.setQuote(dto.getComment());
 
         // TODO SET ALCOHOL DROS
 
-        return drinker;
+        return consumer;
     }
 }

@@ -14,6 +14,6 @@ public interface DrinkTypeDao extends JpaRepository<DrinkType, Long> {
 
     Set<DrinkType> findAllByPercentage(Double percentage);
 
-    Set<DrinkType> findAllByDrinkerId(Long drinkerId);
+    Set<DrinkType> findAllByConsumerId(Long drinkerId);
 
 }

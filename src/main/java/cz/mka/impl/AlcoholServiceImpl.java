@@ -6,6 +6,7 @@ import cz.mka.impl.jpa.DrinkType;
 import cz.mka.impl.utils.AlcoholConverter;
 import cz.mka.rest.model.DrinkTypeDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -13,6 +14,7 @@ import java.util.stream.Collectors;
 /**
  * Created by Martin Kaspar on 24/02/2017.
  */
+@Component
 public class AlcoholServiceImpl implements AlcoholService {
 
     @Autowired
@@ -25,21 +27,6 @@ public class AlcoholServiceImpl implements AlcoholService {
 
     public Set<DrinkTypeDTO> findAll() {
         return dao.findAll().stream()
-                .map(AlcoholConverter::convertDrinkTypeIntoDTO).collect(Collectors.toSet());
-    }
-
-    public Set<DrinkTypeDTO> findAllByTitle(String title) {
-        return dao.findAllByTitle(title).stream()
-                .map(AlcoholConverter::convertDrinkTypeIntoDTO).collect(Collectors.toSet());
-    }
-
-    public Set<DrinkTypeDTO> findAllByPercentage(Double percentage) {
-        return dao.findAllByPercentage(percentage).stream()
-                .map(AlcoholConverter::convertDrinkTypeIntoDTO).collect(Collectors.toSet());
-    }
-
-    public Set<DrinkTypeDTO> findAllByDrinkerId(Long drinkerId) {
-        return dao.findAllByDrinkerId(drinkerId).stream()
                 .map(AlcoholConverter::convertDrinkTypeIntoDTO).collect(Collectors.toSet());
     }
 

@@ -7,15 +7,30 @@ import java.time.LocalDateTime;
 /**
  * Created by Martin Kaspar on 24/02/2017.
  */
-public class DrinkerDTO {
+public class ConsumerDTO {
 
     private Long id;
     private String firstName;
     private String lastName;
-    private String nickname;
-    private DrinkerStatus status;
+    private String nickName;
+    private String email;
+    private ConsumerStatus status;
     private LocalDateTime dateRegistration;
     private String comment;
+
+    public ConsumerDTO() {
+    }
+
+    public ConsumerDTO(Long id, String firstName, String lastName, String nickName, String email, ConsumerStatus status, LocalDateTime dateRegistration, String comment) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.nickName = nickName;
+        this.email = email;
+        this.status = status;
+        this.dateRegistration = dateRegistration;
+        this.comment = comment;
+    }
 
     public Long getId() {
         return id;
@@ -41,19 +56,27 @@ public class DrinkerDTO {
         this.lastName = lastName;
     }
 
-    public String getNickname() {
-        return nickname;
+    public String getNickName() {
+        return nickName;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public String getEmail() {
+        return email;
     }
 
-    public DrinkerStatus getStatus() {
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public ConsumerStatus getStatus() {
         return status;
     }
 
-    public void setStatus(DrinkerStatus status) {
+    public void setStatus(ConsumerStatus status) {
         this.status = status;
     }
 
@@ -77,11 +100,12 @@ public class DrinkerDTO {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        DrinkerDTO that = (DrinkerDTO) o;
+        ConsumerDTO that = (ConsumerDTO) o;
         return Objects.equal(id, that.id) &&
                 Objects.equal(firstName, that.firstName) &&
                 Objects.equal(lastName, that.lastName) &&
-                Objects.equal(nickname, that.nickname) &&
+                Objects.equal(nickName, that.nickName) &&
+                Objects.equal(email, that.email) &&
                 Objects.equal(status, that.status) &&
                 Objects.equal(dateRegistration, that.dateRegistration) &&
                 Objects.equal(comment, that.comment);
@@ -89,6 +113,6 @@ public class DrinkerDTO {
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id, firstName, lastName, nickname, status, dateRegistration, comment);
+        return Objects.hashCode(id, firstName, lastName, nickName, email, status, dateRegistration, comment);
     }
 }

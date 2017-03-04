@@ -2,8 +2,6 @@ package cz.mka.rest.model;
 
 import com.google.common.base.Objects;
 
-import java.util.List;
-
 /**
  * Created by Martin Kaspar on 24/02/2017.
  */
@@ -11,15 +9,18 @@ public class DrinkTypeDTO {
 
 	private Long id;
 	private String title;
+	private DrinkCategory category;
 	private Double volume;
 	private Double percentage;
-	private List<DrinkerDTO> drinkers; // todo mka
+//	private List<ConsumerDTO> drinkers; // todo mka
 
 	public DrinkTypeDTO() {
 	}
 
-	public DrinkTypeDTO(String title, double volume, double percentage) {
+	public DrinkTypeDTO(Long id, String title, DrinkCategory category, double volume, double percentage) {
+		this.id = id;
 		this.title = title;
+		this.category = category;
 		this.volume = volume;
 		this.percentage = percentage;
 	}
@@ -40,6 +41,14 @@ public class DrinkTypeDTO {
 		this.title = title;
 	}
 
+	public DrinkCategory getCategory() {
+		return category;
+	}
+
+	public void setCategory(DrinkCategory category) {
+		this.category = category;
+	}
+
 	public Double getVolume() {
 		return volume;
 	}
@@ -56,13 +65,13 @@ public class DrinkTypeDTO {
 		this.percentage = percentage;
 	}
 
-	public List<DrinkerDTO> getDrinkers() {
+/*	public List<ConsumerDTO> getDrinkers() {
 		return drinkers;
 	}
 
-	public void setDrinkers(List<DrinkerDTO> drinkers) {
+	public void setDrinkers(List<ConsumerDTO> drinkers) {
 		this.drinkers = drinkers;
-	}
+	}*/
 
 	@Override
 	public boolean equals(Object o) {
@@ -71,13 +80,14 @@ public class DrinkTypeDTO {
 		DrinkTypeDTO that = (DrinkTypeDTO) o;
 		return Objects.equal(id, that.id) &&
 				Objects.equal(title, that.title) &&
+				Objects.equal(category, that.category) &&
 				Objects.equal(volume, that.volume) &&
-				Objects.equal(percentage, that.percentage) &&
-				Objects.equal(drinkers, that.drinkers);
+				Objects.equal(percentage, that.percentage/*) &&
+				Objects.equal(drinkers, that.drinkers*/); // todo mka
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hashCode(id, title, volume, percentage, drinkers);
-	}
+		return Objects.hashCode(id, title, category, volume, percentage/*, drinkers*/);
+	} // todo mka
 }

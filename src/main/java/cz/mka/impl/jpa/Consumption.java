@@ -6,7 +6,7 @@ import java.time.LocalTime;
 /**
  * JPA entity.
  * 
- * Represents a single drink consumption by a drinker.
+ * Represents a single drink consumption by a consumer.
  * 
  * @author Alexandr Sevrjukov
  *
@@ -16,21 +16,21 @@ import java.time.LocalTime;
 public class Consumption {
 
 	@Id
+	@Column(name = "CONSUMPTION_ID")
 	private Long id;
 
 	@ManyToOne
-	@JoinColumn(name = "DRINKER_ID", nullable = false)
-	private Drinker drinker;
+	@JoinColumn(name = "CONSUMER_ID", nullable = false)
+	private Consumer consumer;
 
 	@ManyToOne
 	@JoinColumn(name = "DRINK_TYPE_ID", nullable = false)
 	private DrinkType drinkType;
 
-	@Column(name = "CONSUMPTION_TIME")
-	@Temporal(value = TemporalType.TIMESTAMP)
+	@Column(name = "CONSUMPTION_TIME", nullable = false)
+//	@Temporal(value = TemporalType.TIMESTAMP)
 	private LocalTime consumptionTime;
 	
-
 	public Long getId() {
 		return id;
 	}
@@ -39,12 +39,12 @@ public class Consumption {
 		this.id = id;
 	}
 
-	public Drinker getDrinker() {
-		return drinker;
+	public Consumer getConsumer() {
+		return consumer;
 	}
 
-	public void setDrinker(Drinker drinker) {
-		this.drinker = drinker;
+	public void setConsumer(Consumer consumer) {
+		this.consumer = consumer;
 	}
 
 	public DrinkType getDrinkType() {

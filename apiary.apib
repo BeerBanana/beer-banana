@@ -13,14 +13,14 @@ TODO description
 ##### Properties
 | name             | type            | mandatory | description
 |------------------|-----------------|-----------|------------
-| id               | number          | yes       | drinker identifier
+| id               | number          | yes       | consumer identifier
 | firstName        | string          | yes       | first name identifier
 | lastName         | string          | yes       | last name identifier
-| nickName         | string          | no        | random nick name provided by drinker
-| email            | string          | yes       | drinker email address
-| status           | string          | yes       | drinker status, e.g. Sober, Tipsy, Drunk And Ravenous, Where The Hell Are My Keys, Jackson Pollock, Completely Smashed
+| nickName         | string          | no        | random nick name provided by consumer
+| email            | string          | yes       | consumer email address
+| status           | string          | yes       | consumer status, e.g. Sober, Tipsy, Drunk And Ravenous, Where The Hell Are My Keys, Jackson Pollock, Completely Smashed
 | dateRegistration | string          | yes       | formatted [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date
-| comment          | string          | no        | random information provided by drinker, editable at any time, max 500 chars
+| quote          | string          | no        | random information provided by consumer, editable at any time, max 500 chars
 | consumedUnits    | Consumed Units  | yes       | number of total drinks consumed by alcohol unit
 | consumedLitres   | Consumed Litres | yes       | number of total alcohol consumed in litres
 
@@ -44,16 +44,16 @@ TODO description
 
 # Group Drinks
 
-## Drinks Collection [/drinks{?title,category,drinkerId}]
+## Drinks Collection [/drinks{?title,category,consumerId}]
 
 ### List All Drinks [GET]
 
-Retrieves all drinks or by request parameters title, percentage and drinker identifier.
+Retrieves all drinks or by request parameters title, percentage and consumer identifier.
 
 + Parameters
     + title: `bernard` (string, optional) - official title or part of it. Case insensitive
     + category: `beer` (enum, optional) - alcohol percentage category, e.g. beer, wine, cocktail, shot, other. Case insensitive
-    + drinkerId: `12345` (number, optional) - drinker identifier
+    + consumerId: `12345` (number, optional) - consumer identifier
 
 + Response 200 (application/json;charset=UTF-8)
     + Attributes (array[Drinks Collection Response])
@@ -80,14 +80,14 @@ Retrieves drink object by its identifier.
 - consumption: `1458` (number, required) - number of drinkers who consumed current drink
 
 ### Drinker (object)
-- id: `22356` (number, required) - drinker identifier
+- id: `22356` (number, required) - consumer identifier
 - firstName: `Martin` (string, required) - first name identifier
 - lastName: `Kašpar` (string, required) - last name identifier
-- nickName: `Mkax` (string, optional) - random nick name provided by drinker
-- email: `kaspar.mart@gmail.com` (string, required) - drinker email address
-- status: `Completely Smashed` (string, required) - drinker status, e.g. Sober, Tipsy, Drunk And Ravenous, Where The Hell Are My Keys, Jackson Pollock, Completely Smashed
+- nickName: `Mkax` (string, optional) - random nick name provided by consumer
+- email: `kaspar.mart@gmail.com` (string, required) - consumer email address
+- status: `Completely Smashed` (string, required) - consumer status, e.g. Sober, Tipsy, Drunk And Ravenous, Where The Hell Are My Keys, Jackson Pollock, Completely Smashed
 - dateRegistration: `14:52 February 27, 2017` (string, required) - formatted [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date
-- comment: `lol, im batman!` (string, optional) - random information provided by drinker, editable at any time, max 500 chars
+- quote: `lol, im batman!` (string, optional) - random information provided by consumer, editable at any time, max 500 chars
 - totalConsumedByUnits (Drinks Consumed Units) 
 - totalConsumedByLitres (Drinks Consumed Litres)
 

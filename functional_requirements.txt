@@ -31,7 +31,7 @@ CONSUMPTION is the act of ingestion of one unit of a beverage by a DRINKER.
 	//COMMENT - ASE clarify this requirement. Meaning multiple consumptions?
     2. Import multiple alcohol drinks.   
 
-    3. Add a new drinker (consumer).
+    3. Add a new consumer (consumer).
 
 
 	//COMMENT - clarify this. List of consumption by user 
@@ -41,7 +41,7 @@ CONSUMPTION is the act of ingestion of one unit of a beverage by a DRINKER.
         - alcohol type
         - alcohol title
         - alcohol volume range
-        - drinker id
+        - consumer id
 
     5. Retrieve list of all drinkers by:
         - all drinkers in db
@@ -49,15 +49,15 @@ CONSUMPTION is the act of ingestion of one unit of a beverage by a DRINKER.
 
     6. Retrieve alcohol by id and its drinkers.
 
-    7. Retrieve drinker and its drinks.
+    7. Retrieve consumer and its drinks.
 
     8. Update alcohol.
 
-    9. Update drinker.
+    9. Update consumer.
 
     10. Delete alcohol.
 
-    11. Delete drinker.
+    11. Delete consumer.
 
 - Advanced functions:
 

@@ -9,9 +9,11 @@ import java.util.Set;
  * Created by Martin Kaspar on 24/02/2017.
  * 
  */
-@Service
+
 //TODO - refactoring (due to entities and DTO renaming)
 // TODO - update interface in accordance to functional specification
+
+@Service
 public interface AlcoholService {
 
     /**
@@ -27,26 +29,26 @@ public interface AlcoholService {
      */
     Set<DrinkTypeDTO> findAll();
 
-    /**
+/*    *//**
      * Retrieves all alcohols by title.
      * @param title String title
      * @return set of alcohols
-     */
+     *//*
     Set<DrinkTypeDTO> findAllByTitle(String title);
 
-    /**
+    *//**
      * Retrieves all alcohols by percentage.
      * @param percentage Double alcohol percentage
      * @return set of alcohols
-     */
+     *//*
     Set<DrinkTypeDTO> findAllByPercentage(Double percentage);
 
-    /**
+    *//**
      * Retrieves all alcohols by drinker id.
      * @param drinkerId Long id of drinker
      * @return set of alcohols
-     */
-    Set<DrinkTypeDTO> findAllByDrinkerId(Long drinkerId);
+     *//*
+    Set<DrinkTypeDTO> findAllByConsumerId(Long drinkerId);*/
 
     /**
      * Retrieves alcohol by id.

@@ -1,8 +1,13 @@
 package cz.mka.impl.jpa;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.common.base.Objects;
+import cz.mka.rest.model.DrinkCategory;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * Created by Martin Kaspar on 24/02/2017.
@@ -14,12 +19,17 @@ import javax.persistence.*;
 public class DrinkType {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "DRINK_TYPE_ID")
 	private Long id;
-	
+
+	@JsonIgnore
+	private Long consumerId;
+
 	@Column(name = "TITLE")
 	private String title;
+
+	@Column(name = "CATEGORY")
+	private DrinkCategory category;
 	
 	@Column(name = "VOLUME")
 	private Double volume;
@@ -30,13 +40,14 @@ public class DrinkType {
 	public DrinkType() {
 	}
 
-	
-	public DrinkType(String title, Double volume, Double percentage) {
+	public DrinkType(Long id, Long consumerId, String title, DrinkCategory category, Double volume, Double percentage) {
+		this.id = id;
+		this.consumerId = consumerId;
 		this.title = title;
+		this.category = category;
 		this.volume = volume;
 		this.percentage = percentage;
 	}
-
 
 	public Long getId() {
 		return id;
@@ -46,12 +57,28 @@ public class DrinkType {
 		this.id = id;
 	}
 
+	public Long getConsumerId() {
+		return consumerId;
+	}
+
+	public void setConsumerId(Long consumerId) {
+		this.consumerId = consumerId;
+	}
+
 	public String getTitle() {
 		return title;
 	}
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public DrinkCategory getCategory() {
+		return category;
+	}
+
+	public void setCategory(DrinkCategory category) {
+		this.category = category;
 	}
 
 	public Double getVolume() {
@@ -76,14 +103,16 @@ public class DrinkType {
 		if (o == null || getClass() != o.getClass()) return false;
 		DrinkType drinkType = (DrinkType) o;
 		return Objects.equal(id, drinkType.id) &&
+				Objects.equal(consumerId, drinkType.consumerId) &&
 				Objects.equal(title, drinkType.title) &&
+				Objects.equal(category, drinkType.category) &&
 				Objects.equal(volume, drinkType.volume) &&
 				Objects.equal(percentage, drinkType.percentage);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hashCode(id, title, volume, percentage);
+		return Objects.hashCode(id, consumerId, title, category, volume, percentage);
 	}
 
 }

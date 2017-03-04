@@ -3,7 +3,7 @@ package cz.mka.rest.model;
 /**
  * Created by Martin Kaspar on 26/02/2017.
  */
-public enum DrinkerStatus {
+public enum ConsumerStatus {
     SOBER,
     TIPSY,
     DRUNK_AND_RAVENOUS,
