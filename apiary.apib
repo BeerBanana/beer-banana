@@ -22,8 +22,8 @@ of various types.
 | status           | string          | yes       | drinker status, e.g. Sober, Tipsy, Drunk And Ravenous, Where The Hell Are My Keys, Jackson Pollock, Completely Smashed
 | dateRegistration | string          | yes       | formatted [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date
 | comment          | string          | no        | random information provided by drinker, editable at any time, max 500 chars
-| consumedByUnits  | Consumed Units  | yes       | number of total drinks consumed by alcohol unit
-| consumedByLitres | Consumed Litres | yes       | number of total alcohol consumed in litres
+| consumedUnits    | Consumed Units  | yes       | number of total drinks consumed by alcohol unit
+| consumedLitres   | Consumed Litres | yes       | number of total alcohol consumed in litres
 
 
 `DRINK TYPE` is describes a kind of beverage. It's characterized by name, volume,
@@ -34,15 +34,15 @@ alcohol content etc.
 
 # Group Drinks
 
-## Drinks Collection [/drinks{?title,percentage,drinkerId}]
+## Drinks Collection [/drinks{?title,category,drinkerId}]
 
 ### List All Drinks [GET]
 
 Retrieves all drinks or by request parameters title, percentage and drinker identifier.
 
 + Parameters
-    + title: `Staropramen` (string, optional) - official title or part of it. Case insensitive
-    + percentage: `beer` (enum, optional) - alcohol percentage category, e.g. beer, wine, cocktail, shot, other. Case insensitive
+    + title: `bernard` (string, optional) - official title or part of it. Case insensitive
+    + category: `beer` (enum, optional) - alcohol percentage category, e.g. beer, wine, cocktail, shot, other. Case insensitive
     + drinkerId: `12345` (number, optional) - drinker identifier
 
 + Response 200 (application/json;charset=UTF-8)
@@ -63,7 +63,7 @@ Retrieves drink object by its identifier.
 
 ### Drink (object)
 - id: `12345` (number, required) - drink identifier
-- title: `Staropramen 11°` (string, required) - official drink title
+- title: `Bernard 12°` (string, required) - official drink title
 - volume: `0.5` (number, required) - usual drink capacity in litres
 - percentage: `4.7` (number, required) - alcohol percentage per usual drink capacity
 - consumption: `1458` (number, required) - number of drinkers who consumed current drink
