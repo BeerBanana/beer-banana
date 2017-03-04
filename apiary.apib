@@ -7,9 +7,8 @@ TODO description
 
 # Terminology
 
-## Drinker
-`DRINKER` is a person who has an account (registration) and who consumes drinks 
-of various types.
+### Drinker
+`DRINKER` is a person who has an account (registration) and who consumes drinks of various types.
 
 ##### Properties
 | name             | type            | mandatory | description
@@ -25,9 +24,20 @@ of various types.
 | consumedUnits    | Consumed Units  | yes       | number of total drinks consumed by alcohol unit
 | consumedLitres   | Consumed Litres | yes       | number of total alcohol consumed in litres
 
+### Drink
+`DRINK` is describes a kind of beverage. It's characterized by name, volume, alcohol content etc.
 
-`DRINK TYPE` is describes a kind of beverage. It's characterized by name, volume,
-alcohol content etc.
+##### Properties
+| name        | type   | mandatory | description
+|-------------|--------|-----------|------------
+| id          | number | yes       | drinker identifier
+| title       | string | yes       | official drink title
+| category    | enum   | yes       | drink category e.g. beer, wine, shot, etc.
+| volume      | number | yes       | usual drink capacity in litres
+| percentage  | number | yes       | alcohol percentage per usual drink capacity
+| consumption | number | yes       | number of drinkers who consumed current drink
+
+
 
 `CONSUMPTION` is the act of ingestion of one unit of a beverage by a DRINKER.
 
@@ -64,6 +74,7 @@ Retrieves drink object by its identifier.
 ### Drink (object)
 - id: `12345` (number, required) - drink identifier
 - title: `Bernard 12°` (string, required) - official drink title
+- category: `beer` (enum, required) - drink category e.g. beer, wine, shot, etc.
 - volume: `0.5` (number, required) - usual drink capacity in litres
 - percentage: `4.7` (number, required) - alcohol percentage per usual drink capacity
 - consumption: `1458` (number, required) - number of drinkers who consumed current drink
