@@ -31,30 +31,9 @@ public class DrinkTypeRest {
         return new ResponseEntity<>(service.findAll(), HttpStatus.OK);
     }
 
-    // todo mka - find all by XXX sjednotit ??
-
-
-    // find all by title
-/*    @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<Set<DrinkTypeDTO>> findAllByTitle(@RequestParam String title) {
-        return new ResponseEntity<>(service.findAllByTitle(title), HttpStatus.OK);
-    }*/
-
-    // find all by percentage
- /*   @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<Set<DrinkTypeDTO>> findAllByPercentage(@RequestParam Double percentage) {
-        return new ResponseEntity<>(service.findAllByPercentage(percentage), HttpStatus.OK);
-    }*/
-
-    // find all by drinker id
-/*    @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<Set<DrinkTypeDTO>> findAllByDrinkerId(@RequestParam Long drinkerId) {
-        return new ResponseEntity<>(service.findAllByDrinkerId(drinkerId), HttpStatus.OK);
-    }*/
-
     // find by id
     @RequestMapping(path = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<DrinkTypeDTO> findById(@PathVariable long id) {
+    public ResponseEntity<DrinkTypeDTO> findOne(@PathVariable long id) {
         DrinkTypeDTO result = service.findOne(id);
         if (result == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

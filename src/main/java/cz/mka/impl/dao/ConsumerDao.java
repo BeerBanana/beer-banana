@@ -8,4 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface ConsumerDao extends JpaRepository<Consumer, Long> {
 
+    Consumer findByEmail(String email);
+
 }

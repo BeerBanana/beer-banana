@@ -30,7 +30,7 @@ public class Consumption {
 	@JoinColumn(name = "DRINK_TYPE_ID", nullable = false)
 	private DrinkType drinkType;
 
-	@Column(name = "CONSUMPTION_TIME", nullable = false)
+	@Column(name = "CONSUMPTION_TIME", columnDefinition = "timestamp without time zone", nullable = false, updatable = false)
 	@Convert(converter = LocalDateTimeConverter.class)
 	private LocalTime consumptionTime;
 	

@@ -21,5 +21,8 @@ public interface ConsumerService {
     ConsumerDTO findOne(Long id);
 
 
+    ConsumerDTO findByEmail(String email);
+
+
     void delete(Long id);
 }

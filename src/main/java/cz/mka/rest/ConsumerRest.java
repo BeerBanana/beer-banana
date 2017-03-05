@@ -2,17 +2,16 @@ package cz.mka.rest;
 
 import cz.mka.api.ConsumerService;
 import cz.mka.rest.model.ConsumerDTO;
+import cz.mka.rest.model.ConsumerStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 /**
@@ -33,8 +32,15 @@ public class ConsumerRest {
 
     // find by id
     @RequestMapping(path = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<ConsumerDTO> findById(@PathVariable long id) {
+    public ResponseEntity<ConsumerDTO> findOne(@PathVariable long id) {
         ConsumerDTO result = service.findOne(id);
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    // find by id todo tohle asi neni uplne oka
+    @RequestMapping(path = "/find", method = RequestMethod.GET)
+    public ResponseEntity<ConsumerDTO> findByEmail(@RequestParam String email) {
+        ConsumerDTO result = service.findByEmail(email);
         if (result == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -44,7 +50,12 @@ public class ConsumerRest {
     // save new
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<ConsumerDTO> save(@RequestBody @Valid ConsumerDTO dto) {
+
+        dto.setStatus(ConsumerStatus.SOBER);
+        dto.setDateRegistration(LocalDateTime.now());
+
         ConsumerDTO result = service.save(dto);
+
         if (result == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -56,7 +67,9 @@ public class ConsumerRest {
     public ResponseEntity<ConsumerDTO> update(@PathVariable Long id,
                                                @RequestBody @Valid ConsumerDTO dto) {
         dto.setId(id);
+
         ConsumerDTO result = service.save(dto);
+
         if (result == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }

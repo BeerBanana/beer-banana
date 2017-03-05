@@ -34,12 +34,12 @@ public class Consumer {
 	@Size(max = 30)
 	private String nickName;
 
-	@Column(name = "EMAIL", nullable = false)
+	@Column(name = "EMAIL", nullable = false, unique = true)
 	@Size(max = 30)
 	private String email;
 
 	@Column(name = "STATUS", nullable = false)
-	@Size(max = 30)
+	@Enumerated(value = EnumType.STRING)
 	private ConsumerStatus status;
 	
 	@Column(name = "DATE_REGISTRATION", columnDefinition = "timestamp without time zone", nullable = false)
