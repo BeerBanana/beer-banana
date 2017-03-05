@@ -1,6 +1,6 @@
 package cz.mka.rest;
 
-import cz.mka.api.AlcoholService;
+import cz.mka.api.DrinkTypeService;
 import cz.mka.rest.model.DrinkTypeDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,10 +20,10 @@ import java.util.Set;
  */
 @Controller
 @RequestMapping(path = "/drinks", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-public class AlcoholRest {
+public class DrinkTypeRest {
 
     @Autowired
-    private AlcoholService service;
+    private DrinkTypeService service;
 
     // find all
     @RequestMapping(method = RequestMethod.GET)

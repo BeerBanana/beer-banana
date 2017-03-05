@@ -1,12 +1,10 @@
 package cz.mka.impl.jpa;
 
 import com.google.common.base.Objects;
+import cz.mka.impl.utils.LocalDateTimeConverter;
 import cz.mka.rest.model.ConsumerStatus;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
@@ -20,7 +18,8 @@ import java.time.LocalDateTime;
 public class Consumer {
 
 	@Id
-	@Column(name = "CONSUMER_ID")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "CONSUMER_ID", columnDefinition = "serial")
 	private Long id;
 	
 	@Column(name = "FIRST_NAME")
@@ -43,7 +42,8 @@ public class Consumer {
 	@Size(max = 30)
 	private ConsumerStatus status;
 	
-	@Column(name = "DATE_REGISTRATION", nullable = false)
+	@Column(name = "DATE_REGISTRATION", columnDefinition = "timestamp without time zone", nullable = false)
+	@Convert(converter = LocalDateTimeConverter.class)
 	private LocalDateTime dateRegistration;
 	
 	@Column(name = "QUOTE")

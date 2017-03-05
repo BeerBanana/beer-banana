@@ -1,13 +1,10 @@
 package cz.mka.impl.jpa;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.common.base.Objects;
 import cz.mka.rest.model.DrinkCategory;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 /**
  * Created by Martin Kaspar on 24/02/2017.
@@ -19,16 +16,16 @@ import javax.persistence.Table;
 public class DrinkType {
 
 	@Id
-	@Column(name = "DRINK_TYPE_ID")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "DRINK_TYPE_ID", columnDefinition = "serial")
 	private Long id;
 
-	@JsonIgnore
-	private Long consumerId;
-
 	@Column(name = "TITLE")
+	@Size(max = 30)
 	private String title;
 
 	@Column(name = "CATEGORY")
+	@Size(max = 30)
 	private DrinkCategory category;
 	
 	@Column(name = "VOLUME")
@@ -42,7 +39,6 @@ public class DrinkType {
 
 	public DrinkType(Long id, Long consumerId, String title, DrinkCategory category, Double volume, Double percentage) {
 		this.id = id;
-		this.consumerId = consumerId;
 		this.title = title;
 		this.category = category;
 		this.volume = volume;
@@ -55,14 +51,6 @@ public class DrinkType {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public Long getConsumerId() {
-		return consumerId;
-	}
-
-	public void setConsumerId(Long consumerId) {
-		this.consumerId = consumerId;
 	}
 
 	public String getTitle() {
@@ -103,7 +91,6 @@ public class DrinkType {
 		if (o == null || getClass() != o.getClass()) return false;
 		DrinkType drinkType = (DrinkType) o;
 		return Objects.equal(id, drinkType.id) &&
-				Objects.equal(consumerId, drinkType.consumerId) &&
 				Objects.equal(title, drinkType.title) &&
 				Objects.equal(category, drinkType.category) &&
 				Objects.equal(volume, drinkType.volume) &&
@@ -112,7 +99,7 @@ public class DrinkType {
 
 	@Override
 	public int hashCode() {
-		return Objects.hashCode(id, consumerId, title, category, volume, percentage);
+		return Objects.hashCode(id, title, category, volume, percentage);
 	}
 
 }

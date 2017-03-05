@@ -1,6 +1,6 @@
 package cz.mka.impl;
 
-import cz.mka.api.AlcoholService;
+import cz.mka.api.DrinkTypeService;
 import cz.mka.impl.dao.DrinkTypeDao;
 import cz.mka.impl.jpa.DrinkType;
 import cz.mka.impl.utils.AlcoholConverter;
@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
  * Created by Martin Kaspar on 24/02/2017.
  */
 @Component
-public class AlcoholServiceImpl implements AlcoholService {
+public class DrinkTypeServiceImpl implements DrinkTypeService {
 
     @Autowired
     private DrinkTypeDao dao;

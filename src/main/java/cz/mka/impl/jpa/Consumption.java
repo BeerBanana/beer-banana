@@ -1,5 +1,7 @@
 package cz.mka.impl.jpa;
 
+import cz.mka.impl.utils.LocalDateTimeConverter;
+
 import javax.persistence.*;
 import java.time.LocalTime;
 
@@ -16,7 +18,8 @@ import java.time.LocalTime;
 public class Consumption {
 
 	@Id
-	@Column(name = "CONSUMPTION_ID")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "CONSUMPTION_ID", columnDefinition = "serial")
 	private Long id;
 
 	@ManyToOne
@@ -28,7 +31,7 @@ public class Consumption {
 	private DrinkType drinkType;
 
 	@Column(name = "CONSUMPTION_TIME", nullable = false)
-//	@Temporal(value = TemporalType.TIMESTAMP)
+	@Convert(converter = LocalDateTimeConverter.class)
 	private LocalTime consumptionTime;
 	
 	public Long getId() {

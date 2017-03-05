@@ -8,5 +8,6 @@ public enum DrinkCategory {
     WINE,
     COCKTAIL,
     SHOT,
+    ROCKET_FUEL,
     OTHER
 }

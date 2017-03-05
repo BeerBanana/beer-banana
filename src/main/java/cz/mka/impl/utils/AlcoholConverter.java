@@ -49,7 +49,7 @@ public class AlcoholConverter {
      * @param consumer Consumer
      * @return ConsumerDTO
      */
-    public static ConsumerDTO convertDrinkerIntoDTO(Consumer consumer) {
+    public static ConsumerDTO convertConsumerIntoDTO(Consumer consumer) {
         ConsumerDTO dto = new ConsumerDTO();
 
         dto.setId(consumer.getId());
@@ -57,6 +57,7 @@ public class AlcoholConverter {
         dto.setLastName(consumer.getLastName());
         dto.setNickName(consumer.getNickName());
         dto.setStatus(consumer.getStatus());
+        dto.setEmail(consumer.getEmail());
         dto.setDateRegistration(consumer.getDateRegistration());
         dto.setComment(consumer.getQuote());
 
@@ -68,7 +69,7 @@ public class AlcoholConverter {
      * @param dto ConsumerDTO
      * @return Consumer
      */
-    public static Consumer convertDTOIntoDrinker(ConsumerDTO dto) {
+    public static Consumer convertDTOIntoConsumer(ConsumerDTO dto) {
         Consumer consumer = new Consumer();
 
         consumer.setId(dto.getId());
@@ -76,6 +77,7 @@ public class AlcoholConverter {
         consumer.setLastName(dto.getLastName());
         consumer.setNickName(dto.getNickName());
         consumer.setStatus(dto.getStatus());
+        consumer.setEmail(dto.getEmail());
         consumer.setDateRegistration(dto.getDateRegistration());
         consumer.setQuote(dto.getComment());
 
