@@ -2,15 +2,15 @@ package cz.mka.beerbanana.service;
 
 import java.util.Set;
 
-import cz.mka.beerbanana.domain.to.DrinkTypeDTO;
+import cz.mka.beerbanana.domain.to.DrinkTypeTO;
 
 public interface DrinkTypeService {
 
-    DrinkTypeDTO save(DrinkTypeDTO alcohol);
+    DrinkTypeTO save(DrinkTypeTO alcohol);
 
-    Set<DrinkTypeDTO> findAll();
+    Set<DrinkTypeTO> findAll();
 
-    DrinkTypeDTO findOne(Long id);
+    DrinkTypeTO findOne(Long id);
 
     void delete(Long id);
 

@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 import cz.mka.beerbanana.converter.AlcoholConverter;
 import cz.mka.beerbanana.dao.ConsumerDao;
 import cz.mka.beerbanana.domain.consumption.Consumer;
-import cz.mka.beerbanana.domain.to.ConsumerDTO;
+import cz.mka.beerbanana.domain.to.ConsumerTO;
 import cz.mka.beerbanana.exception.DataConflictException;
 import cz.mka.beerbanana.exception.ItemNotFoundException;
 
@@ -19,7 +19,7 @@ public class ConsumerServiceDefault implements ConsumerService {
     @Autowired
     private ConsumerDao dao;
 
-    public ConsumerDTO save(ConsumerDTO dto) {
+    public ConsumerTO save(ConsumerTO dto) {
         dto.setEmail(dto.getEmail().trim().toLowerCase());
 
         Consumer currentConsumer = dao.findByEmail(dto.getEmail());
@@ -32,12 +32,12 @@ public class ConsumerServiceDefault implements ConsumerService {
         return AlcoholConverter.convertConsumerIntoDTO(result);
     }
 
-    public Set<ConsumerDTO> findAll() {
+    public Set<ConsumerTO> findAll() {
         return dao.findAll().stream()
             .map(AlcoholConverter::convertConsumerIntoDTO).collect(Collectors.toSet());
     }
 
-    public ConsumerDTO findOne(Long id) {
+    public ConsumerTO findOne(Long id) {
 
         Consumer result = dao.findOne(id);
 
@@ -47,7 +47,7 @@ public class ConsumerServiceDefault implements ConsumerService {
         return AlcoholConverter.convertConsumerIntoDTO(result);
     }
 
-    public ConsumerDTO findByEmail(String email) {
+    public ConsumerTO findByEmail(String email) {
         Consumer result = dao.findByEmail(email.trim().toLowerCase());
         if (result == null) {
             throw new ItemNotFoundException();

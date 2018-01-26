@@ -4,19 +4,19 @@ import com.google.common.base.Objects;
 
 import cz.mka.beerbanana.domain.enums.DrinkCategory;
 
-public class DrinkTypeDTO {
+public class DrinkTypeTO {
 
 	private Long id;
 	private String title;
 	private DrinkCategory category;
 	private Double volume;
 	private Double percentage;
-//	private List<ConsumerDTO> drinkers; // todo mka
+//	private List<ConsumerTO> drinkers; // todo mka
 
-	public DrinkTypeDTO() {
+	public DrinkTypeTO() {
 	}
 
-	public DrinkTypeDTO(Long id, String title, DrinkCategory category, double volume, double percentage) {
+	public DrinkTypeTO(Long id, String title, DrinkCategory category, double volume, double percentage) {
 		this.id = id;
 		this.title = title;
 		this.category = category;
@@ -64,11 +64,11 @@ public class DrinkTypeDTO {
 		this.percentage = percentage;
 	}
 
-/*	public List<ConsumerDTO> getDrinkers() {
+/*	public List<ConsumerTO> getDrinkers() {
 		return drinkers;
 	}
 
-	public void setDrinkers(List<ConsumerDTO> drinkers) {
+	public void setDrinkers(List<ConsumerTO> drinkers) {
 		this.drinkers = drinkers;
 	}*/
 
@@ -76,7 +76,7 @@ public class DrinkTypeDTO {
 	public boolean equals(Object o) {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
-		DrinkTypeDTO that = (DrinkTypeDTO) o;
+		DrinkTypeTO that = (DrinkTypeTO) o;
 		return Objects.equal(id, that.id) &&
 				Objects.equal(title, that.title) &&
 				Objects.equal(category, that.category) &&

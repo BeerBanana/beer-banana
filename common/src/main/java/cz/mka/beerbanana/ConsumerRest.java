@@ -17,7 +17,7 @@ import java.util.Set;
 import javax.validation.Valid;
 
 import cz.mka.beerbanana.domain.enums.ConsumerStatus;
-import cz.mka.beerbanana.domain.to.ConsumerDTO;
+import cz.mka.beerbanana.domain.to.ConsumerTO;
 import cz.mka.beerbanana.service.ConsumerService;
 
 @Controller
@@ -29,21 +29,21 @@ public class ConsumerRest {
 
     // find all
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<Set<ConsumerDTO>> findAll() {
+    public ResponseEntity<Set<ConsumerTO>> findAll() {
         return new ResponseEntity<>(service.findAll(), HttpStatus.OK);
     }
 
     // find by id
     @RequestMapping(path = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<ConsumerDTO> findOne(@PathVariable long id) {
-        ConsumerDTO result = service.findOne(id);
+    public ResponseEntity<ConsumerTO> findOne(@PathVariable long id) {
+        ConsumerTO result = service.findOne(id);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     // find by id todo tohle asi neni uplne oka
     @RequestMapping(path = "/find", method = RequestMethod.GET)
-    public ResponseEntity<ConsumerDTO> findByEmail(@RequestParam String email) {
-        ConsumerDTO result = service.findByEmail(email);
+    public ResponseEntity<ConsumerTO> findByEmail(@RequestParam String email) {
+        ConsumerTO result = service.findByEmail(email);
         if (result == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -52,12 +52,12 @@ public class ConsumerRest {
 
     // save new
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<ConsumerDTO> save(@RequestBody @Valid ConsumerDTO dto) {
+    public ResponseEntity<ConsumerTO> save(@RequestBody @Valid ConsumerTO dto) {
 
         dto.setStatus(ConsumerStatus.SOBER);
         dto.setDateRegistration(LocalDateTime.now());
 
-        ConsumerDTO result = service.save(dto);
+        ConsumerTO result = service.save(dto);
 
         if (result == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -67,11 +67,11 @@ public class ConsumerRest {
 
     // update
     @RequestMapping(path = "/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<ConsumerDTO> update(@PathVariable Long id,
-                                              @RequestBody @Valid ConsumerDTO dto) {
+    public ResponseEntity<ConsumerTO> update(@PathVariable Long id,
+                                             @RequestBody @Valid ConsumerTO dto) {
         dto.setId(id);
 
-        ConsumerDTO result = service.save(dto);
+        ConsumerTO result = service.save(dto);
 
         if (result == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

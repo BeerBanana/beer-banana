@@ -2,19 +2,19 @@ package cz.mka.beerbanana.converter;
 
 import cz.mka.beerbanana.domain.consumption.Consumer;
 import cz.mka.beerbanana.domain.consumption.DrinkType;
-import cz.mka.beerbanana.domain.to.ConsumerDTO;
-import cz.mka.beerbanana.domain.to.DrinkTypeDTO;
+import cz.mka.beerbanana.domain.to.ConsumerTO;
+import cz.mka.beerbanana.domain.to.DrinkTypeTO;
 
 public class AlcoholConverter {
 
     /**
-     * Converts DrinkType into DrinkTypeDTO.
+     * Converts DrinkType into DrinkTypeTO.
      *
      * @param drinkType DrinkType
-     * @return DrinkTypeDTO
+     * @return DrinkTypeTO
      */
-    public static DrinkTypeDTO convertDrinkTypeIntoDTO(DrinkType drinkType) {
-        DrinkTypeDTO dto = new DrinkTypeDTO();
+    public static DrinkTypeTO convertDrinkTypeIntoDTO(DrinkType drinkType) {
+        DrinkTypeTO dto = new DrinkTypeTO();
 
         dto.setId(drinkType.getId());
         dto.setTitle(drinkType.getTitle());
@@ -26,12 +26,12 @@ public class AlcoholConverter {
     }
 
     /**
-     * Converts DrinkTypeDTO into DrinkType.
+     * Converts DrinkTypeTO into DrinkType.
      *
-     * @param dto DrinkTypeDTO
+     * @param dto DrinkTypeTO
      * @return DrinkType
      */
-    public static DrinkType convertDTOIntoDrinkType(DrinkTypeDTO dto) {
+    public static DrinkType convertDTOIntoDrinkType(DrinkTypeTO dto) {
         DrinkType drinkType = new DrinkType();
 
         drinkType.setId(dto.getId());
@@ -44,13 +44,13 @@ public class AlcoholConverter {
     }
 
     /**
-     * Converts Consumer into ConsumerDTO.
+     * Converts Consumer into ConsumerTO.
      *
      * @param consumer Consumer
-     * @return ConsumerDTO
+     * @return ConsumerTO
      */
-    public static ConsumerDTO convertConsumerIntoDTO(Consumer consumer) {
-        ConsumerDTO dto = new ConsumerDTO();
+    public static ConsumerTO convertConsumerIntoDTO(Consumer consumer) {
+        ConsumerTO dto = new ConsumerTO();
 
         dto.setId(consumer.getId());
         dto.setFirstName(consumer.getFirstName());
@@ -65,12 +65,12 @@ public class AlcoholConverter {
     }
 
     /**
-     * Converts ConsumerDTO into Consumer.
+     * Converts ConsumerTO into Consumer.
      *
-     * @param dto ConsumerDTO
+     * @param dto ConsumerTO
      * @return Consumer
      */
-    public static Consumer convertDTOIntoConsumer(ConsumerDTO dto) {
+    public static Consumer convertDTOIntoConsumer(ConsumerTO dto) {
         Consumer consumer = new Consumer();
 
         consumer.setId(dto.getId());

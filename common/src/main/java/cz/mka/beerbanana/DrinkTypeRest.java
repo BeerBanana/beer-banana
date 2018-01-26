@@ -14,7 +14,7 @@ import java.util.Set;
 
 import javax.validation.Valid;
 
-import cz.mka.beerbanana.domain.to.DrinkTypeDTO;
+import cz.mka.beerbanana.domain.to.DrinkTypeTO;
 import cz.mka.beerbanana.service.DrinkTypeService;
 
 @Controller
@@ -26,14 +26,14 @@ public class DrinkTypeRest {
 
     // find all
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<Set<DrinkTypeDTO>> findAll() {
+    public ResponseEntity<Set<DrinkTypeTO>> findAll() {
         return new ResponseEntity<>(service.findAll(), HttpStatus.OK);
     }
 
     // find by id
     @RequestMapping(path = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<DrinkTypeDTO> findOne(@PathVariable long id) {
-        DrinkTypeDTO result = service.findOne(id);
+    public ResponseEntity<DrinkTypeTO> findOne(@PathVariable long id) {
+        DrinkTypeTO result = service.findOne(id);
         if (result == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -42,8 +42,8 @@ public class DrinkTypeRest {
 
     // save new
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<DrinkTypeDTO> save(@RequestBody @Valid DrinkTypeDTO dto) {
-        DrinkTypeDTO result = service.save(dto);
+    public ResponseEntity<DrinkTypeTO> save(@RequestBody @Valid DrinkTypeTO dto) {
+        DrinkTypeTO result = service.save(dto);
         if (result == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -52,10 +52,10 @@ public class DrinkTypeRest {
 
     // update
     @RequestMapping(path = "/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<DrinkTypeDTO> update(@PathVariable Long id,
-                                               @RequestBody @Valid DrinkTypeDTO dto) {
+    public ResponseEntity<DrinkTypeTO> update(@PathVariable Long id,
+                                              @RequestBody @Valid DrinkTypeTO dto) {
         dto.setId(id);
-        DrinkTypeDTO result = service.save(dto);
+        DrinkTypeTO result = service.save(dto);
         if (result == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }

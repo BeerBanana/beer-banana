@@ -2,17 +2,17 @@ package cz.mka.beerbanana.service;
 
 import java.util.Set;
 
-import cz.mka.beerbanana.domain.to.ConsumerDTO;
+import cz.mka.beerbanana.domain.to.ConsumerTO;
 
 public interface ConsumerService {
 
-    ConsumerDTO save(ConsumerDTO alcohol);
+    ConsumerTO save(ConsumerTO alcohol);
 
-    Set<ConsumerDTO> findAll();
+    Set<ConsumerTO> findAll();
 
-    ConsumerDTO findOne(Long id);
+    ConsumerTO findOne(Long id);
 
-    ConsumerDTO findByEmail(String email);
+    ConsumerTO findByEmail(String email);
 
     void delete(Long id);
 }

@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 import cz.mka.beerbanana.domain.enums.ConsumerStatus;
 
-public class ConsumerDTO {
+public class ConsumerTO {
 
     private Long id;
     private String firstName;
@@ -17,10 +17,10 @@ public class ConsumerDTO {
     private LocalDateTime dateRegistration;
     private String comment;
 
-    public ConsumerDTO() {
+    public ConsumerTO() {
     }
 
-    public ConsumerDTO(Long id, String firstName, String lastName, String nickName, String email, ConsumerStatus status, LocalDateTime dateRegistration, String comment) {
+    public ConsumerTO(Long id, String firstName, String lastName, String nickName, String email, ConsumerStatus status, LocalDateTime dateRegistration, String comment) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -99,7 +99,7 @@ public class ConsumerDTO {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ConsumerDTO that = (ConsumerDTO) o;
+        ConsumerTO that = (ConsumerTO) o;
         return Objects.equal(id, that.id) &&
                 Objects.equal(firstName, that.firstName) &&
                 Objects.equal(lastName, that.lastName) &&
