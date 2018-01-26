@@ -20,29 +20,19 @@ import cz.mka.beerbanana.converter.LocalDateTimeConverter;
  * Represents a single drink consumption by a consumer.
  * 
  * @author Alexandr Sevrjukov
- *
  */
 @Entity
 @Table(name = "CONSUMPTION")
 public class Consumption {
 
+	private Long id;
+	private Consumer consumer;
+	private DrinkType drinkType;
+	private LocalTime consumptionTime;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "CONSUMPTION_ID", columnDefinition = "serial")
-	private Long id;
-
-	@ManyToOne
-	@JoinColumn(name = "CONSUMER_ID", nullable = false)
-	private Consumer consumer;
-
-	@ManyToOne
-	@JoinColumn(name = "DRINK_TYPE_ID", nullable = false)
-	private DrinkType drinkType;
-
-	@Column(name = "CONSUMPTION_TIME", columnDefinition = "timestamp without time zone", nullable = false, updatable = false)
-	@Convert(converter = LocalDateTimeConverter.class)
-	private LocalTime consumptionTime;
-	
 	public Long getId() {
 		return id;
 	}
@@ -51,6 +41,8 @@ public class Consumption {
 		this.id = id;
 	}
 
+	@ManyToOne
+	@JoinColumn(name = "CONSUMER_ID", nullable = false)
 	public Consumer getConsumer() {
 		return consumer;
 	}
@@ -59,6 +51,8 @@ public class Consumption {
 		this.consumer = consumer;
 	}
 
+	@ManyToOne
+	@JoinColumn(name = "DRINK_TYPE_ID", nullable = false)
 	public DrinkType getDrinkType() {
 		return drinkType;
 	}
@@ -67,6 +61,8 @@ public class Consumption {
 		this.drinkType = drinkType;
 	}
 
+	@Column(name = "CONSUMPTION_TIME", columnDefinition = "timestamp without time zone", nullable = false, updatable = false)
+	@Convert(converter = LocalDateTimeConverter.class)
 	public LocalTime getConsumptionTime() {
 		return consumptionTime;
 	}

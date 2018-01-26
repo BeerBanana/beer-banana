@@ -1,7 +1,5 @@
 package cz.mka.beerbanana.domain.consumption;
 
-import com.google.common.base.Objects;
-
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -27,53 +25,18 @@ import cz.mka.beerbanana.domain.enums.ConsumerStatus;
 @Table(name = "CONSUMER")
 public class Consumer {
 
+	private Long id;
+	private String firstName;
+	private String lastName;
+	private String nickName;
+	private String email;
+	private ConsumerStatus status;
+	private LocalDateTime dateRegistration;
+	private String quote;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "CONSUMER_ID", columnDefinition = "serial")
-	private Long id;
-	
-	@Column(name = "FIRST_NAME")
-	@Size(max = 30)
-	private String firstName;
-	
-	@Column(name = "LAST_NAME")
-	@Size(max = 30)
-	private String lastName;
-	
-	@Column(name = "NICK_NAME", nullable = false)
-	@Size(max = 30)
-	private String nickName;
-
-	@Column(name = "EMAIL", nullable = false, unique = true)
-	@Size(max = 30)
-	private String email;
-
-	@Column(name = "STATUS", nullable = false)
-	@Enumerated(value = EnumType.STRING)
-	private ConsumerStatus status;
-	
-	@Column(name = "DATE_REGISTRATION", columnDefinition = "timestamp without time zone", nullable = false)
-	@Convert(converter = LocalDateTimeConverter.class)
-	private LocalDateTime dateRegistration;
-	
-	@Column(name = "QUOTE")
-	@Size(max = 300)
-	private String quote;
-
-	public Consumer() {
-	}
-
-	public Consumer(Long id, String firstName, String lastName, String nickName, String email, ConsumerStatus status, LocalDateTime dateRegistration, String quote) {
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.nickName = nickName;
-		this.email = email;
-		this.status = status;
-		this.dateRegistration = dateRegistration;
-		this.quote = quote;
-	}
-
 	public Long getId() {
 		return id;
 	}
@@ -82,6 +45,8 @@ public class Consumer {
 		this.id = id;
 	}
 
+	@Column(name = "FIRST_NAME")
+	@Size(max = 30)
 	public String getFirstName() {
 		return firstName;
 	}
@@ -90,6 +55,8 @@ public class Consumer {
 		this.firstName = firstName;
 	}
 
+	@Column(name = "LAST_NAME")
+	@Size(max = 30)
 	public String getLastName() {
 		return lastName;
 	}
@@ -98,6 +65,8 @@ public class Consumer {
 		this.lastName = lastName;
 	}
 
+	@Column(name = "NICK_NAME", nullable = false)
+	@Size(max = 30)
 	public String getNickName() {
 		return nickName;
 	}
@@ -106,6 +75,8 @@ public class Consumer {
 		this.nickName = nickName;
 	}
 
+	@Column(name = "EMAIL", nullable = false, unique = true)
+	@Size(max = 30)
 	public String getEmail() {
 		return email;
 	}
@@ -114,6 +85,8 @@ public class Consumer {
 		this.email = email;
 	}
 
+	@Column(name = "STATUS", nullable = false)
+	@Enumerated(value = EnumType.STRING)
 	public ConsumerStatus getStatus() {
 		return status;
 	}
@@ -122,6 +95,8 @@ public class Consumer {
 		this.status = status;
 	}
 
+	@Column(name = "DATE_REGISTRATION", columnDefinition = "timestamp without time zone", nullable = false)
+	@Convert(converter = LocalDateTimeConverter.class)
 	public LocalDateTime getDateRegistration() {
 		return dateRegistration;
 	}
@@ -130,6 +105,8 @@ public class Consumer {
 		this.dateRegistration = dateRegistration;
 	}
 
+	@Column(name = "QUOTE")
+	@Size(max = 300)
 	public String getQuote() {
 		return quote;
 	}
@@ -138,23 +115,4 @@ public class Consumer {
 		this.quote = quote;
 	}
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
-		Consumer consumer = (Consumer) o;
-		return Objects.equal(id, consumer.id) &&
-				Objects.equal(firstName, consumer.firstName) &&
-				Objects.equal(lastName, consumer.lastName) &&
-				Objects.equal(nickName, consumer.nickName) &&
-				Objects.equal(email, consumer.email) &&
-				Objects.equal(status, consumer.status) &&
-				Objects.equal(dateRegistration, consumer.dateRegistration) &&
-				Objects.equal(quote, consumer.quote);
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hashCode(id, firstName, lastName, nickName, email, status, dateRegistration, quote);
-	}
 }
