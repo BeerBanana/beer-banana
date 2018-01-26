@@ -13,8 +13,8 @@ import javax.validation.constraints.Size;
 import cz.mka.beerbanana.domain.enums.DrinkCategory;
 
 /**
- * Created by Martin Kaspar on 24/02/2017.
- * 
+ * JPA entity.
+ *
  * Represent a type of drink (such as Vodka, Beer, etc).
  */
 @Entity

@@ -19,7 +19,7 @@ import cz.mka.beerbanana.converter.LocalDateTimeConverter;
 import cz.mka.beerbanana.domain.enums.ConsumerStatus;
 
 /**
- * Created by Martin Kaspar on 24/02/2017.
+ * JPA entity.
  * 
  * Represents a user (a person) who consumes drinks.
  */

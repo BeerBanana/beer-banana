@@ -1,8 +1,5 @@
 package cz.mka.beerbanana.domain.enums;
 
-/**
- * Created by Martin Kaspar on 26/02/2017.
- */
 public enum ConsumerStatus {
     SOBER,
     TIPSY,

@@ -4,9 +4,6 @@ import com.google.common.base.Objects;
 
 import cz.mka.beerbanana.domain.enums.DrinkCategory;
 
-/**
- * Created by Martin Kaspar on 24/02/2017.
- */
 public class DrinkTypeDTO {
 
 	private Long id;

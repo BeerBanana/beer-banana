@@ -1,7 +1,7 @@
 package cz.mka.beerbanana.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -13,11 +13,8 @@ import cz.mka.beerbanana.domain.to.ConsumerDTO;
 import cz.mka.beerbanana.exception.DataConflictException;
 import cz.mka.beerbanana.exception.ItemNotFoundException;
 
-/**
- * Created by martin on 5.3.2017.
- */
-@Component
-public class ConsumerServiceImpl implements ConsumerService {
+@Service
+public class ConsumerServiceDefault implements ConsumerService {
 
     @Autowired
     private ConsumerDao dao;
@@ -37,7 +34,7 @@ public class ConsumerServiceImpl implements ConsumerService {
 
     public Set<ConsumerDTO> findAll() {
         return dao.findAll().stream()
-                .map(AlcoholConverter::convertConsumerIntoDTO).collect(Collectors.toSet());
+            .map(AlcoholConverter::convertConsumerIntoDTO).collect(Collectors.toSet());
     }
 
     public ConsumerDTO findOne(Long id) {

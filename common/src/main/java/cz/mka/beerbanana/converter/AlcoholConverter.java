@@ -5,13 +5,11 @@ import cz.mka.beerbanana.domain.consumption.DrinkType;
 import cz.mka.beerbanana.domain.to.ConsumerDTO;
 import cz.mka.beerbanana.domain.to.DrinkTypeDTO;
 
-/**
- * Created by Martin Kaspar on 25/02/2017.
- */
 public class AlcoholConverter {
 
     /**
      * Converts DrinkType into DrinkTypeDTO.
+     *
      * @param drinkType DrinkType
      * @return DrinkTypeDTO
      */
@@ -29,6 +27,7 @@ public class AlcoholConverter {
 
     /**
      * Converts DrinkTypeDTO into DrinkType.
+     *
      * @param dto DrinkTypeDTO
      * @return DrinkType
      */
@@ -46,6 +45,7 @@ public class AlcoholConverter {
 
     /**
      * Converts Consumer into ConsumerDTO.
+     *
      * @param consumer Consumer
      * @return ConsumerDTO
      */
@@ -66,6 +66,7 @@ public class AlcoholConverter {
 
     /**
      * Converts ConsumerDTO into Consumer.
+     *
      * @param dto ConsumerDTO
      * @return Consumer
      */

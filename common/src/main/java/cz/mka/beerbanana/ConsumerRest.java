@@ -20,9 +20,6 @@ import cz.mka.beerbanana.domain.enums.ConsumerStatus;
 import cz.mka.beerbanana.domain.to.ConsumerDTO;
 import cz.mka.beerbanana.service.ConsumerService;
 
-/**
- * Created by martin on 5.3.2017.
- */
 @Controller
 @RequestMapping(path = "/consumers", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class ConsumerRest {
@@ -71,7 +68,7 @@ public class ConsumerRest {
     // update
     @RequestMapping(path = "/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<ConsumerDTO> update(@PathVariable Long id,
-                                               @RequestBody @Valid ConsumerDTO dto) {
+                                              @RequestBody @Valid ConsumerDTO dto) {
         dto.setId(id);
 
         ConsumerDTO result = service.save(dto);
@@ -88,9 +85,5 @@ public class ConsumerRest {
         service.delete(id);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
-
-
-
-
 
 }

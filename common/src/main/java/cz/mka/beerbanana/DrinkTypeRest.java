@@ -17,9 +17,6 @@ import javax.validation.Valid;
 import cz.mka.beerbanana.domain.to.DrinkTypeDTO;
 import cz.mka.beerbanana.service.DrinkTypeService;
 
-/**
- * Created by Martin Kaspar on 24/02/2017.
- */
 @Controller
 @RequestMapping(path = "/drinks", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class DrinkTypeRest {
@@ -71,6 +68,5 @@ public class DrinkTypeRest {
         service.delete(id);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
-
 
 }

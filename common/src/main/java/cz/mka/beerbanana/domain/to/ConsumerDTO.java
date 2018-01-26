@@ -6,9 +6,6 @@ import java.time.LocalDateTime;
 
 import cz.mka.beerbanana.domain.enums.ConsumerStatus;
 
-/**
- * Created by Martin Kaspar on 24/02/2017.
- */
 public class ConsumerDTO {
 
     private Long id;
